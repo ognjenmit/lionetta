@@ -2,25 +2,24 @@
 
 import { useEffect, useRef, useState, type CSSProperties, type FormEvent, type KeyboardEvent } from "react";
 import Image from "next/image";
-import type { ChatResponse, Mode, PendingConfirmation, Tenant, TenantsResponse, ToolCall, Vehicle } from "../lib/contracts";
+import type { ChatResponse, Mode, PendingConfirmation, Tenant, TenantsResponse, ToolCall, Vehicle, Property, Product } from "../lib/contracts";
 import { Brand, Icon, LionMark, LIONETTA_LOGO_SRC } from "./brand";
+import { demoExperiences } from "./demo-examples";
+import { PropertyCard, ProductCard, QuoteCards } from "./catalog-cards";
 
 interface Message {
   id: string;
   role: "assistant" | "user";
   text: string;
   vehicles?: Vehicle[];
+  properties?: Property[];
+  products?: Product[];
+  quotes?: Record<string, unknown>[];
   toolCalls?: ToolCall[];
   pendingConfirmation?: PendingConfirmation;
   pending?: boolean;
   error?: boolean;
 }
-
-const examples = [
-  { title: "Find my next BMW", detail: "Automatic · under €25,000", prompt: "I want a BMW 3 Series under €25,000, automatic and below 50,000 km." },
-  { title: "Explore available cars", detail: "See this dealer’s inventory", prompt: "Show me available cars." },
-  { title: "Try a CRM action", detail: "Review before creating a lead", prompt: "create lead: Alex | alex@example.com | bmw-320d-001" },
-];
 
 const currency = new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
 const number = new Intl.NumberFormat("en-IE");
@@ -43,7 +42,7 @@ function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
         <h3>{vehicle.model}</h3>
         <div className="vehicle-price">{currency.format(vehicle.price)}</div>
         <div className="vehicle-specs"><span>{number.format(vehicle.mileage)} km</span><span>{vehicle.transmission}</span><span>{vehicle.fuel}</span></div>
-        <details className="vehicle-details"><summary>View vehicle <span aria-hidden="true">＋</span></summary><dl><div><dt>Model year</dt><dd>{vehicle.year}</dd></div><div><dt>Transmission</dt><dd>{vehicle.transmission}</dd></div><div><dt>Fuel</dt><dd>{vehicle.fuel}</dd></div><div><dt>Inventory ID</dt><dd>{vehicle.id}</dd></div></dl><p>Local fixture data. This is a sample listing.</p></details>
+        <details className="vehicle-details"><summary>View vehicle <span aria-hidden="true">＋</span></summary><dl><div><dt>Model year</dt><dd>{vehicle.year}</dd></div><div><dt>Transmission</dt><dd>{vehicle.transmission}</dd></div><div><dt>Fuel</dt><dd>{vehicle.fuel}</dd></div><div><dt>Features</dt><dd>{vehicle.features?.join(", ") || "See demo inventory"}</dd></div><div><dt>History</dt><dd>{vehicle.serviceHistory || "No record"}</dd></div><div><dt>Inventory ID</dt><dd>{vehicle.id}</dd></div></dl><p>{vehicle.description || "Local fixture data. This is a sample listing."}</p></details>
       </div>
     </article>
   );
@@ -53,7 +52,7 @@ function welcomeMessage(tenant: Tenant): Message {
   return {
     id: crypto.randomUUID(),
     role: "assistant",
-    text: `Welcome to ${tenant.brandName || tenant.name}. Tell me what you’re looking for: a budget, brand, mileage, or transmission. I’ll search this dealer’s local demo inventory.`,
+    text: `Welcome to ${tenant.brandName || tenant.name}. ${demoExperiences[tenant.domain].subhead} Tell me your requirements, or try an example below. I’ll use this business’s fictional local data.`,
   };
 }
 
@@ -81,8 +80,8 @@ export default function Home() {
       try {
         const response = await fetch("/api/tenants", { signal: controller.signal });
         const data = await response.json() as TenantsResponse & { error?: string };
-        if (!response.ok) throw new Error(data.error || "Could not load the local dealerships.");
-        if (!Array.isArray(data.tenants) || !data.tenants.length) throw new Error("No local dealerships are configured.");
+        if (!response.ok) throw new Error(data.error || "Could not load the local businesses.");
+        if (!Array.isArray(data.tenants) || !data.tenants.length) throw new Error("No local businesses are configured.");
         if (controller.signal.aborted) return;
         const first = data.tenants[0]!;
         setTenants(data.tenants);
@@ -107,9 +106,16 @@ export default function Home() {
   useEffect(() => () => request.current?.abort(), []);
 
   const tenant = tenants.find((item) => item.id === tenantId);
+  const experience = demoExperiences[tenant?.domain ?? "cars"];
+  const examples = experience.examples;
   const color = tenant?.primaryColor && /^#(?:[\da-f]{3}|[\da-f]{6})$/i.test(tenant.primaryColor) ? tenant.primaryColor : "#151c2a";
   const theme = { "--tenant-color": color } as CSSProperties;
-  const vehicles = messages.findLast((message) => message.toolCalls?.some((tool) => tool.name === "inventory.search_vehicles" && tool.status === "success"))?.vehicles ?? [];
+  const inventoryMessage = messages.findLast((message) => message.toolCalls?.some((tool) => /^inventory\.(search_(vehicles|properties|products)|get_(vehicle|property|product))$/.test(tool.name) && tool.status === "success"));
+  const vehicles = inventoryMessage?.vehicles ?? [];
+  const properties = inventoryMessage?.properties ?? [];
+  const products = inventoryMessage?.products ?? [];
+  const matchCount = vehicles.length + properties.length + products.length;
+  const modeLabel = mode === "anthropic" ? "Claude · local data" : mode === "openai" ? "OpenAI · local data" : "Local demo · fixture data";
 
   function selectTenant(id: string) {
     const selected = tenants.find((item) => item.id === id);
@@ -135,7 +141,7 @@ export default function Home() {
     setPrompt("");
     const pendingId = crypto.randomUUID();
     setMessages((current) => [...current,
-      { id: crypto.randomUUID(), role: "user", text: confirmationId ? "Confirm the CRM action shown above." : text },
+      { id: crypto.randomUUID(), role: "user", text: confirmationId ? "Confirm the proposed action shown above." : text },
       { id: pendingId, role: "assistant", text: "Working on your request…", pending: true },
     ]);
     const timeout = setTimeout(() => controller.abort(), 65000);
@@ -157,6 +163,9 @@ export default function Home() {
           role: "assistant",
           text: data.reply,
           vehicles: Array.isArray(data.vehicles) ? data.vehicles : [],
+          properties: Array.isArray(data.properties) ? data.properties : [],
+          products: Array.isArray(data.products) ? data.products : [],
+          quotes: Array.isArray(data.quotes) ? data.quotes : [],
           toolCalls: Array.isArray(data.toolCalls) ? data.toolCalls : [],
           pendingConfirmation: data.pendingConfirmation,
         };
@@ -228,31 +237,38 @@ export default function Home() {
         </section>
 
         <section className="demo-section container" id="demo" aria-labelledby="demo-title">
-          <div className="demo-heading"><div><p className="eyebrow">The Lionetta experience</p><h2 id="demo-title">Your brand. <span>Your assistant.</span></h2><p>See connected intelligence at work inside a client&apos;s own experience.</p></div><div className="dealer-switch"><label htmlFor="dealer">Demo dealership</label><select id="dealer" value={tenantId} onChange={(event) => selectTenant(event.target.value)} disabled={loadingTenants || !tenants.length}>{!tenants.length && <option value="">{loadingTenants ? "Connecting…" : "Runtime unavailable"}</option>}{tenants.map((item) => <option value={item.id} key={item.id}>{item.name}</option>)}</select></div></div>
+          <div className="demo-heading"><div><p className="eyebrow">The Lionetta experience</p><h2 id="demo-title">Your brand. <span>Your assistant.</span></h2><p>Explore three businesses, each with its own sources, policies, and workflows.</p></div><div className="dealer-switch"><label htmlFor="dealer">Demo business</label><select id="dealer" value={tenantId} onChange={(event) => selectTenant(event.target.value)} disabled={loadingTenants || !tenants.length}>{!tenants.length && <option value="">{loadingTenants ? "Connecting…" : "Runtime unavailable"}</option>}{tenants.map((item) => <option value={item.id} key={item.id}>{item.name}</option>)}</select></div></div>
+          <div className="demo-scenarios" aria-label="Extended demo examples">{Object.entries(demoExperiences).map(([domain, scenario]) => <article key={domain} className="scenario-card" data-active={tenant?.domain === domain}>
+            <div className="scenario-title"><Icon name={scenario.icon} /><h3>{scenario.title}</h3></div><p>{scenario.description}</p><blockquote>{scenario.prompt}</blockquote>
+            <ol>{scenario.journey.map(step => <li key={step}>{step}</li>)}</ol><button type="button" disabled={loadingTenants || !tenants.some(item => item.id === scenario.tenantId)} aria-pressed={tenant?.domain === domain} onClick={() => selectTenant(scenario.tenantId)}>Explore {scenario.title.toLowerCase()} <Icon name="arrow" /></button>
+          </article>)}</div>
           {connectionError && <div className="connection-error" role="alert"><p>{connectionError}</p><button type="button" onClick={() => setRetry((value) => value + 1)} disabled={loadingTenants}>Retry connection</button></div>}
           <div className="client-frame">
-            <div className="frame-bar"><div className="frame-dots" aria-hidden="true"><i /><i /><i /></div><span>{tenant?.name || "Client"} · Lionetta demo</span><span className="frame-mode"><span />{mode === "openai" ? "API model · demo inventory" : "Local demo · fixture data"}</span></div>
+            <div className="frame-bar"><div className="frame-dots" aria-hidden="true"><i /><i /><i /></div><span>{tenant?.name || "Client"} · Lionetta demo</span><span className="frame-mode"><span />{modeLabel}</span></div>
             <div className="client-body">
               <div className="client-website">
-                <header className="client-header"><div className="client-wordmark"><Icon name="car" /><strong>{tenant?.name || "Your dealership"}</strong><small>Premium motoring</small></div><a href="#client-inventory">Vehicles</a><button type="button" className="client-cta" disabled={busy || !tenantId} onClick={() => { void sendPrompt("Show me available cars."); }}>Find your next car <Icon name="arrow" /></button></header>
-                <div className="client-hero"><p className="eyebrow">Premium cars. Personal conversations.</p><h3>Find your<br /><em>next chapter.</em></h3><p>The right car starts with a conversation.<br />Tell your assistant what matters to you.</p><div className="client-hero-car" aria-hidden="true"><Icon name="car" /></div></div>
-                <div className="client-inventory" id="client-inventory"><div className="inventory-heading"><h4>{vehicles.length ? "Your matching vehicles" : "A car that fits your life"}</h4><span>{vehicles.length ? `${vehicles.length} ${vehicles.length === 1 ? "match" : "matches"}` : "Explore with your assistant"}</span></div>{vehicles.length ? <div className="fleet-cards">{vehicles.slice(0, 3).map((vehicle) => <VehicleCard key={vehicle.id} vehicle={vehicle} />)}</div> : <div className="inventory-placeholder"><div><Icon name="inventory" /><strong>Choose your model</strong><span>From everyday to extraordinary.</span></div><div><Icon name="pricing" /><strong>Set your budget</strong><span>Find the right fit for your plans.</span></div><div><Icon name="shield" /><strong>Make it yours</strong><span>Explore every detail with confidence.</span></div></div>}</div>
-                <div className="client-footer"><span>Local sample listings · EUR prices</span><span>Powered by <strong>Lionetta</strong><Icon name="spark" /></span></div>
+                <header className="client-header"><div className="client-wordmark"><Icon name={experience.icon} /><strong>{tenant?.name || "Your business"}</strong><small>{experience.tagline}</small></div><a href="#client-inventory">Browse</a><button type="button" className="client-cta" disabled={busy || !tenantId} onClick={() => { void sendPrompt(experience.browse); }}>Explore inventory <Icon name="arrow" /></button></header>
+                <div className="client-hero"><p className="eyebrow">{experience.tagline}. Personal conversations.</p><h3>{experience.headline}</h3><p>{experience.subhead}<br />Tell your assistant what matters to you.</p><div className="client-hero-car" aria-hidden="true"><Icon name={experience.icon} /></div></div>
+                <div className="client-inventory" id="client-inventory"><div className="inventory-heading"><h4>{matchCount ? experience.inventoryLabel : experience.emptyLabel}</h4><span>{matchCount ? `${matchCount} ${matchCount === 1 ? "match" : "matches"}` : "Explore with your assistant"}</span></div>{matchCount ? <div className="fleet-cards">{vehicles.slice(0, 3).map(vehicle => <VehicleCard key={vehicle.id} vehicle={vehicle} />)}{properties.slice(0, 3).map(property => <PropertyCard key={property.id} property={property} />)}{products.slice(0, 3).map(product => <ProductCard key={product.id} product={product} />)}</div> : <div className="inventory-placeholder"><div><Icon name={experience.icon} /><strong>Choose your options</strong><span>Start with what matters to you.</span></div><div><Icon name="pricing" /><strong>Set your budget</strong><span>Find the right fit for your plans.</span></div><div><Icon name="shield" /><strong>Explore the details</strong><span>Compare your choices with confidence.</span></div></div>}</div>
+                <div className="client-footer"><span>Fictional local data · EUR prices</span><span>Powered by <strong>Lionetta</strong><Icon name="spark" /></span></div>
               </div>
               <aside className="assistant-panel" aria-label="Client assistant">
-                <header className="assistant-header"><div className="assistant-brand-icon"><Icon name="car" /></div><div><strong>{tenant?.brandName || "Your assistant"}</strong><span>Your personal car advisor</span></div><span className="assistant-online" aria-label={loadingTenants ? "Connecting" : connectionError ? "Unavailable" : "Local runtime available"} data-connected={!loadingTenants && !connectionError} /></header>
+                <header className="assistant-header"><div className="assistant-brand-icon"><Icon name={experience.icon} /></div><div><strong>{tenant?.brandName || "Your assistant"}</strong><span>Your {tenant?.domain === "b2b" ? "business" : tenant?.domain === "real-estate" ? "property" : "car"} advisor</span></div><span className="assistant-online" aria-label={loadingTenants ? "Connecting" : connectionError ? "Unavailable" : "Local runtime available"} data-connected={!loadingTenants && !connectionError} /></header>
                 <section ref={chatLog} className="conversation" aria-label="Conversation" role="log" aria-live="polite" aria-relevant="additions text">
                   {messages.map((message) => <article key={message.id} className={`message ${message.role}${message.error ? " error" : ""}${message.pending ? " pending" : ""}`}>
                     <div className="avatar" aria-hidden="true">{message.role === "user" ? "You" : <LionMark />}</div>
                     <div className="message-content"><div className="message-name">{message.role === "user" ? "You" : tenant?.brandName || "Lionetta"}</div><p className="message-text" role={message.error ? "alert" : undefined}>{message.text}</p>
                       {!!message.vehicles?.length && <div className="vehicles">{message.vehicles.map((vehicle) => <VehicleCard vehicle={vehicle} key={vehicle.id} />)}</div>}
+                      {!!message.properties?.length && <div className="vehicles">{message.properties.map(property => <PropertyCard property={property} key={property.id} />)}</div>}
+                      {!!message.products?.length && <div className="vehicles">{message.products.map(product => <ProductCard product={product} key={product.id} />)}</div>}
+                      {!!message.quotes?.length && <QuoteCards quotes={message.quotes} />}
                       {!!message.toolCalls?.length && <details className="tool-trace"><summary>{message.toolCalls.length} tool {message.toolCalls.length === 1 ? "call" : "calls"} · execution details</summary><ul>{message.toolCalls.map((tool, index) => <li key={`${tool.name}-${index}`}><code>{tool.name}</code><span className="tool-status">{tool.status.replaceAll("_", " ")}</span></li>)}</ul></details>}
-                      {message.pendingConfirmation && <div className="confirmation"><span className="eyebrow">Your confirmation is needed</span><h3>Review this CRM action</h3><p>This action will write to the local demo CRM.</p><div className="confirmation-tool">{message.pendingConfirmation.toolName}</div><pre>{JSON.stringify(message.pendingConfirmation.arguments, null, 2)}</pre><button type="button" disabled={busy} onClick={() => { void sendPrompt("confirm", message.pendingConfirmation!.id); }}>Confirm CRM action <Icon name="arrow" /></button></div>}
+                      {message.pendingConfirmation && <div className="confirmation"><span className="eyebrow">Your confirmation is needed</span><h3>Review this demo request</h3><p>This saves a record in the local demo CRM. No external booking or order is created.</p><div className="confirmation-tool">{message.pendingConfirmation.toolName}</div><pre>{JSON.stringify(message.pendingConfirmation.arguments, null, 2)}</pre><button type="button" disabled={busy} onClick={() => { void sendPrompt("confirm", message.pendingConfirmation!.id); }}>Confirm CRM action <Icon name="arrow" /></button></div>}
                     </div>
                   </article>)}
                 </section>
                 <div className="suggestions" aria-label="Try an example request">{examples.map((example) => <button type="button" className="suggestion" key={example.title} disabled={busy || !tenantId} onClick={() => { void sendPrompt(example.prompt); }}>{example.title}<Icon name="arrow" /></button>)}</div>
-                <div className="composer-wrap"><form className="composer" onSubmit={submit} aria-busy={busy}><label className="sr-only" htmlFor="prompt">Message your car assistant</label><textarea ref={input} id="prompt" value={prompt} onChange={(event) => setPrompt(event.target.value)} onKeyDown={onKeyDown} rows={1} maxLength={4000} placeholder="Ask about cars, budget, or mileage…" aria-describedby="composer-note" disabled={!tenantId} /><button className="send" type="submit" disabled={busy || !tenantId || !prompt.trim()} aria-label={busy ? "Searching" : "Send message"}>{busy ? <span className="sending-dot" /> : <Icon name="arrow" />}</button></form><p id="composer-note" className="composer-note">{mode === "demo" ? "Demo mode · no model or live integrations connected" : "API model connected · local fixture integrations"}</p></div>
+                <div className="composer-wrap"><form className="composer" onSubmit={submit} aria-busy={busy}><label className="sr-only" htmlFor="prompt">Message your assistant</label><textarea ref={input} id="prompt" value={prompt} onChange={(event) => setPrompt(event.target.value)} onKeyDown={onKeyDown} rows={1} maxLength={4000} placeholder={experience.placeholder} aria-describedby="composer-note" disabled={!tenantId} /><button className="send" type="submit" disabled={busy || !tenantId || !prompt.trim()} aria-label={busy ? "Searching" : "Send message"}>{busy ? <span className="sending-dot" /> : <Icon name="arrow" />}</button></form><p id="composer-note" className="composer-note">{mode === "demo" ? "Demo parser · fictional data · add your Claude key to explore freely" : `${modeLabel} · fictional data`}</p></div>
                 <div className="assistant-powered">Intelligence by <Brand compact /></div>
               </aside>
             </div>

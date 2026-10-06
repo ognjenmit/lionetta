@@ -1,3 +1,6 @@
+export type AgentMode = "demo" | "openai" | "anthropic";
+export type Domain = "cars" | "real-estate" | "b2b";
+
 export interface Vehicle {
   id: string;
   brand: string;
@@ -8,6 +11,28 @@ export interface Vehicle {
   fuel: string;
   year: number;
   url: string;
+  bodyType?: string;
+  color?: string;
+  seats?: number;
+  features?: string[];
+  description?: string;
+  serviceHistory?: string;
+}
+
+export interface Property {
+  id: string; title: string; listingType: "sale" | "rent"; propertyType: "apartment" | "house" | "office";
+  city: string; neighborhood: string; price: number; bedrooms: number; bathrooms: number; area: number;
+  features: string[]; description: string; energyRating: string; availability: string; serviceCharges: number; url: string;
+}
+
+export interface Product {
+  id: string; sku: string; name: string; category: string; unitPrice: number; stock: number;
+  minimumOrderQuantity: number; leadTimeDays: number; description: string; specifications: Record<string, string>;
+  priceBreaks: { minQuantity: number; unitPrice: number }[]; warrantyMonths: number; url: string;
+}
+
+export interface PublicTenant {
+  id: string; name: string; brandName: string; primaryColor: string; domain: Domain;
 }
 
 export interface ToolPermission {
@@ -31,6 +56,7 @@ export interface TenantConfig {
   primaryColor: string;
   systemPrompt: string;
   model: string;
+  domain?: Domain;
   mcpServers: McpServerConfig[];
 }
 
@@ -65,10 +91,13 @@ export interface PendingConfirmation {
 
 export interface AgentReply {
   reply: string;
-  mode: "demo" | "openai";
+  mode: AgentMode;
   sessionId: string;
   tenantId: string;
   vehicles: Vehicle[];
+  properties: Property[];
+  products: Product[];
+  quotes: Record<string, unknown>[];
   toolCalls: ToolTrace[];
   pendingConfirmation?: PendingConfirmation;
 }

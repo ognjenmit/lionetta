@@ -16,6 +16,7 @@ RUN npm run build:backend
 FROM dependencies AS web-build
 ENV NEXT_TELEMETRY_DISABLED=1
 COPY apps/web ./apps/web
+COPY packages/shared ./packages/shared
 RUN npm run build --workspace @lionetta/web
 
 FROM node:24.19.0-bookworm-slim AS backend

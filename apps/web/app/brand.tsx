@@ -1,6 +1,6 @@
 export const LIONETTA_LOGO_SRC = "/brand/lionetta-lioness-logo.png";
 
-type IconName = "arrow" | "spark" | "inventory" | "pricing" | "crm" | "shield" | "layers" | "car";
+type IconName = "arrow" | "spark" | "inventory" | "pricing" | "crm" | "shield" | "layers" | "car" | "home";
 
 const paths: Record<IconName, string> = {
   arrow: "M5 12h14m-6-6 6 6-6 6",
@@ -11,6 +11,7 @@ const paths: Record<IconName, string> = {
   shield: "m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Zm-4 9 3 3 5-6",
   layers: "m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5",
   car: "m3 12 2-6h14l2 6M3 12h18v7h-3v-3H6v3H3v-7Zm3 1h2m8 0h2",
+  home: "m3 11 9-8 9 8M5 10v11h14V10M9 21v-7h6v7",
 };
 
 export function Icon({ name, className = "" }: { name: IconName; className?: string }) {

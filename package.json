@@ -2,11 +2,16 @@
   "name": "lionetta",
   "version": "0.1.0",
   "private": true,
-  "description": "One conversation, every system. Local multi-tenant MCP car-search MVP.",
+  "description": "Local Claude/MCP assistant demos for cars, real estate, and B2B wholesale.",
   "type": "module",
-  "engines": { "node": ">=24 <25", "npm": ">=11 <12" },
+  "engines": {
+    "node": ">=24 <25",
+    "npm": ">=11 <12"
+  },
   "packageManager": "npm@11.9.0",
-  "workspaces": ["apps/web"],
+  "workspaces": [
+    "apps/web"
+  ],
   "scripts": {
     "dev": "node --env-file-if-exists=.env scripts/services.mjs --dev",
     "build:backend": "tsc -p tsconfig.json",
@@ -21,6 +26,7 @@
     "tf:aws": "terraform -chdir=infrastructure/aws"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "0.131.0",
     "@modelcontextprotocol/sdk": "1.32.1",
     "openai": "7.28.0",
     "zod": "4.6.5"

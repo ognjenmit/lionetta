@@ -1,7 +1,7 @@
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { randomUUID } from "node:crypto";
 import { z } from "zod";
-import type { AgentInput, AgentReply, TenantConfig } from "../../../packages/shared/src/index.js";
+import type { AgentInput, AgentReply, AgentMode, TenantConfig } from "../../../packages/shared/src/index.js";
 
 export interface AgentService {
   invoke(input: AgentInput): Promise<AgentReply>;
@@ -40,7 +40,7 @@ async function body(request: IncomingMessage): Promise<z.infer<typeof bodySchema
   return result.data;
 }
 
-export function createApp(agent: AgentService, tenants: TenantConfig[], mode: "demo" | "openai") {
+export function createApp(agent: AgentService, tenants: TenantConfig[], mode: AgentMode) {
   let activeRequests = 0;
   const server = createServer(async (request, response) => {
     response.setHeader("X-Content-Type-Options", "nosniff");
@@ -49,7 +49,7 @@ export function createApp(agent: AgentService, tenants: TenantConfig[], mode: "d
       if (request.method === "GET" && path === "/ping") {
         json(response, 200, { status: activeRequests ? "HealthyBusy" : "Healthy", time_of_last_update: Math.floor(Date.now() / 1000) });
       } else if (request.method === "GET" && path === "/tenants") {
-        json(response, 200, { mode, tenants: tenants.map(({ id, name, brandName, primaryColor }) => ({ id, name, brandName, primaryColor })) });
+        json(response, 200, { mode, tenants: tenants.map(({ id, name, brandName, primaryColor, domain = "cars" }) => ({ id, name, brandName, primaryColor, domain })) });
       } else if (request.method === "POST" && path === "/invocations") {
         const input = await body(request);
         if (!tenants.some((tenant) => tenant.id === input.tenantId)) throw new HttpError(404, "Unknown tenant.");

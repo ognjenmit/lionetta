@@ -2,7 +2,7 @@
 
 One conversation, every system.
 
-A local car-advisor MVP built with **TypeScript, npm, Next.js, and real MCP connections**. It includes configurable demo dealerships, vehicle cards, inventory/pricing/CRM MCP services, and a separate Terraform scaffold for future AWS Bedrock AgentCore deployment.
+A local assistant platform built with **TypeScript, npm, Next.js, Anthropic Claude, and real MCP connections**. Explore cars, real estate, and B2B wholesale through configurable business tenants, inventory/pricing/CRM MCP services, and a separate Terraform scaffold for future AWS Bedrock AgentCore deployment.
 
 The demo pairs Lionetta's dark green-and-purple lioness identity with a light Rivermore client website and embedded assistant. The simple lioness logo has subtle feminine facial contours and is used consistently in the header, hero, integration diagram, assistant, footer, and browser icons. The transparent logo lives at `apps/web/public/brand/lionetta-lioness-logo.png`; illustrative vehicle images are also served locally from `apps/web/public`. Vehicle specifications and prices still come from the MCP fixture data.
 
@@ -25,11 +25,27 @@ Try the sample request:
 
 For Rivermore, this discovers `inventory.search_vehicles`, searches fixture data, retrieves prices through `pricing.get_price`, and displays three matching BMWs. Switch to Northside Motors to use a different inventory and tool policy. Rivermore retains the `delta-motors` demo identifier in configuration and fixtures.
 
-Try `integrations`, `list leads`, and `create lead: Alex | alex@example.com | bmw-320d-001`. Creating a lead shows the exact proposed action and requires an explicit confirmation. Confirmation tokens belong to one tenant and conversation, expire after ten minutes, and can be used once. Northside's CRM writes are disabled.
+The demo section also offers **Haven Estates** (`haven-estates`) and **Atlas Wholesale** (`atlas-wholesale`). Each example has an extended starting prompt and follow-up actions. Fixtures include **22 vehicles, 12 properties, 12 products, and 16 business-policy articles**. [The demo playbook](docs/demo-playbook.md) includes prompts, expected calculations, and instructions for extending the data.
+
+Try `integrations`, `list leads`, and `create lead: Alex | alex@example.com | bmw-320d-001`. Leads, viewing requests, and B2B quote requests show the exact proposed action and require explicit confirmation. Confirmation tokens belong to one tenant and conversation, expire after ten minutes, and can be used once. Northside's CRM writes are disabled.
+
+## Connect Claude
+
+The application and its MCP services run locally; Claude reasoning uses Anthropic's hosted API. Put your own API key in **`.env`**, which is ignored by Git, rather than in TypeScript source. Copy `.env.example` to `.env` if it does not exist, then set:
+
+```dotenv
+LIONETTA_AGENT_MODE=anthropic
+ANTHROPIC_API_KEY=your-key-entered-locally
+ANTHROPIC_MODEL=claude-sonnet-4-6
+```
+
+Restart `npm run dev` (or restart Compose) after changing the file. `ANTHROPIC_MODEL` is configurable; `ANTHROPIC_BASE_URL` optionally changes the endpoint and defaults to `https://api.anthropic.com`. The browser never receives the key. Claude discovers each tenant's permitted tools and uses native Anthropic `tool_use` / `tool_result` messages. It retains complete turns and source results for follow-up questions, with histories separated by tenant and session and bounded to eight turns. CRM actions still require host confirmation.
+
+Without a key, leave `LIONETTA_AGENT_MODE=demo` to use the three deterministic demo workflows. The Claude adapter was validated against a local fake Anthropic endpoint; live Anthropic calls require your key and were not made during credential-free validation.
 
 ## Optional API model
 
-The default agent is a small deterministic parser that proves the local MCP workflow. For broader conversations, set these values in your ignored `.env`:
+OpenAI remains an alternative provider. Set these values in your ignored `.env`:
 
 ```dotenv
 LIONETTA_AGENT_MODE=openai
@@ -37,7 +53,7 @@ LIONETTA_MODEL_API_KEY=your-key-entered-locally
 LIONETTA_MODEL=gpt-4.1-mini
 ```
 
-Restart the services after changing `.env`. The OpenAI adapter discovers the same permitted tools and enforces the same confirmation gate; only model reasoning leaves your machine. `LIONETTA_MODEL_BASE_URL` supports a compatible endpoint, with default `https://api.openai.com/v1`. Live provider calls require your credentials and were not part of credential-free validation. No secret values belong in source code, Terraform files, logs, or chat.
+Restart the services after changing `.env`. The OpenAI adapter discovers the same permitted tools and enforces the same confirmation gate. `LIONETTA_MODEL_BASE_URL` supports a compatible endpoint, with default `https://api.openai.com/v1`. Provider settings stay on the backend.
 
 ## Docker Compose
 
@@ -48,7 +64,7 @@ docker compose up --build
 docker compose down
 ```
 
-Compose runs the same five services, binds exposed ports to your laptop's loopback interface, and waits for backend health checks. It uses `.env` for the optional model settings. Fixture inventory is stored in JSON; demo leads, conversation history, and pending confirmations are in memory and reset on restart. PostgreSQL and real system adapters belong to the next phase.
+Compose runs the same five services, binds exposed ports to your laptop's loopback interface, and waits for backend health checks. It uses `.env` for Claude or OpenAI settings. Fixture sources are stored in JSON; demo leads/viewing/quote requests, conversation history, and pending confirmations are in memory and reset on restart. PostgreSQL and real system adapters belong to the next phase.
 
 ## Validate
 
@@ -56,11 +72,11 @@ Compose runs the same five services, binds exposed ports to your laptop's loopba
 npm run verify
 ```
 
-This checks backend/frontend types, runs meaningful agent and policy tests plus a real HTTP/MCP integration suite, builds both applications, and exercises the compiled five-service stack through the Next.js API proxy. Tests cover the BMW example, tool discovery, tenant scoping, disabled tools, confirmation and replay denial, malformed requests, and the optional model loop using a fake local model endpoint.
+This checks backend/frontend types, runs meaningful agent and policy tests plus a real HTTP/MCP integration suite, builds both applications, and exercises the compiled five-service stack through the Next.js API proxy. Tests cover all three domains, stock/MOQ/quantity pricing, property costs, tool discovery, tenant scoping, confirmation and replay denial, malformed requests, and both provider protocols using fake local endpoints.
 
 For the compiled stack, run `npm run build && npm start`. The app intentionally has no login or billing in this phase. Selecting a demo tenant and supplying a session ID are **not authentication**; use fixture data until trusted user identity and authorization are implemented.
 
-With either the npm or Compose stack already running, `npm run check:running` checks every service and the representative BMW request through the UI proxy.
+With either the npm or Compose stack already running, `npm run check:running` checks every service and the car, real estate, and B2B examples through the UI proxy.
 
 ## Layout and configuration
 
@@ -68,12 +84,15 @@ With either the npm or Compose stack already running, `npm run check:running` ch
 | --- | --- |
 | `apps/web` | Next.js chat UI and fixed API proxy routes |
 | `apps/api` | Node HTTP API with `/ping`, `/tenants`, and `/invocations` |
-| `packages/agent` | Demo parser, optional model loop, history and confirmations |
+| `packages/agent` | Claude/OpenAI adapters, demo parsers, history and confirmations |
 | `packages/mcp-client` | MCP discovery, namespaced tool routing and permissions |
 | `packages/shared` | Shared TypeScript contracts |
 | `mcp` | Inventory, pricing/leasing, and CRM Streamable HTTP servers |
 | `config/tenants.json` | Branding, prompts, models, MCP URLs and per-tool policy |
 | `fixtures/vehicles.json` | Separate inventory per demo tenant |
+| `fixtures/properties.json` | Property locations, features, prices, rental charges |
+| `fixtures/products.json` | Product specs, MOQ, stock, lead times and quantity price tiers |
+| `fixtures/knowledge.json` | Tenant-specific warranties, policies and business terms |
 | `infrastructure/local` | Local runtime contract; no cloud resources |
 | `infrastructure/aws` | Future AgentCore Terraform scaffold |
 

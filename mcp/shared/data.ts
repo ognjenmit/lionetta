@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { z } from 'zod';
 import type { Vehicle } from '../../packages/shared/src/index.js';
+import { catalogTenantIds } from './catalog.js';
 
 export type { Vehicle } from '../../packages/shared/src/index.js';
 
@@ -15,6 +16,8 @@ export const vehicleSchema = z.object({
   fuel: z.string().min(1),
   year: z.number().int().min(1900).max(2100),
   url: z.string().min(1),
+  bodyType: z.string().optional(), color: z.string().optional(), seats: z.number().int().positive().optional(),
+  features: z.array(z.string()).optional(), description: z.string().optional(), serviceHistory: z.string().optional(),
 });
 
 const fixtureSchema = z.record(
@@ -25,7 +28,7 @@ const fixtureDirectory = process.env['LIONETTA_FIXTURES_DIR'] ?? resolve(process
 const inventory = new Map<string, Vehicle[]>(Object.entries(
   fixtureSchema.parse(JSON.parse(readFileSync(resolve(fixtureDirectory, 'vehicles.json'), 'utf8'))),
 ));
-const tenantIds = [...inventory.keys()];
+const tenantIds = [...new Set([...inventory.keys(), ...catalogTenantIds])];
 if (tenantIds.length === 0) throw new Error('Vehicle fixtures must define at least one tenant inventory');
 
 // Expose only configured tenants in the MCP input schema without source edits.
@@ -39,9 +42,7 @@ for (const [tenantId, vehicles] of inventory) {
 }
 
 export function vehiclesForTenant(tenantId: TenantId): readonly Vehicle[] {
-  const vehicles = inventory.get(tenantId);
-  if (vehicles === undefined) throw new Error('Unknown tenant inventory');
-  return vehicles;
+  return inventory.get(tenantId) ?? [];
 }
 
 export function findVehicle(tenantId: TenantId, vehicleId: string): Vehicle | undefined {

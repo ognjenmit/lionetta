@@ -5,11 +5,12 @@ export function parseVehicleSearch(prompt: string): Record<string, unknown> {
   const brands: Array<[RegExp, string]> = [
     [/\bbmw\b/i, "BMW"],
     [/\baudi\b/i, "Audi"],
-    [/\bmercedes(?:-benz)?\b/i, "Mercedes-Benz"],
+    [/\bmercedes(?:-benz)?\b/i, "Mercedes"],
     [/\btoyota\b/i, "Toyota"],
     [/\b(?:volkswagen|vw)\b/i, "Volkswagen"],
     [/\bvolvo\b/i, "Volvo"],
     [/\bskoda\b/i, "Skoda"],
+    [/\btesla\b/i, "Tesla"],
   ];
   const brand = brands.find(([pattern]) => pattern.test(prompt));
   if (brand) args.brand = brand[1];
@@ -23,6 +24,8 @@ export function parseVehicleSearch(prompt: string): Record<string, unknown> {
 
   if (/\bautomatic\b|\bauto\b/.test(normalized)) args.transmission = "automatic";
   else if (/\bmanual\b/.test(normalized)) args.transmission = "manual";
+  for (const fuel of ["electric", "hybrid", "diesel", "petrol"]) if (new RegExp(`\\b${fuel}\\b`).test(normalized)) args.fuel = fuel;
+  for (const body of ["SUV", "estate", "hatchback", "saloon"]) if (new RegExp(`\\b${body}\\b`, "i").test(prompt)) args.body_type = body;
 
   // Mileage takes precedence over budget when both amounts use "under".
   const mileage = prompt.match(/(?:under|below|max(?:imum)?|up to|less than)\s*(?:mileage\s*(?:of|:)?\s*)?(\d+(?:[.,\s]\d+)*(?:\s*k\b)?)\s*(?:km|kilomet(?:er|re)s?)\b/i)

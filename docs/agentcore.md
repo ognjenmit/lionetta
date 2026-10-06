@@ -2,6 +2,8 @@
 
 Lionetta runs locally through npm. `infrastructure/aws` is an optional Terraform sandbox scaffold for a later deployment. It creates an execution role and an HTTP AgentCore Runtime from an image that has already been published to ECR. No AWS resources are needed for local development, and this scaffold does not deploy the web application or the inventory, pricing and CRM MCP services.
 
+The local agent now supports native Anthropic Claude through `LIONETTA_AGENT_MODE=anthropic`, `ANTHROPIC_API_KEY`, and `ANTHROPIC_MODEL`. For a future runtime, inject the key from managed secret storage rather than baking `.env` into the image or Terraform state. The three-domain tools and provider adapter remain behind the same invocation contract; durable data, authenticated tenants and real integrations are still migration work.
+
 The cloud path uses Terraform `~> 1.16.0` and the HashiCorp AWS provider `~> 6.67.0`, with a committed provider lockfile. Keep Terraform as the infrastructure owner: the npm AgentCore CLI also supports TypeScript, but its deployment workflow uses CDK and would create a separate infrastructure state.
 
 ## Runtime contract

@@ -1,0 +1,266 @@
+{
+  "haven-estates": [
+    {
+      "id": "belgrade-riverside-201",
+      "title": "Riverside two-bedroom apartment",
+      "city": "Belgrade",
+      "neighborhood": "New Belgrade",
+      "price": 219000,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "area": 82,
+      "features": [
+        "Parking",
+        "Balcony",
+        "Elevator"
+      ],
+      "listingType": "sale",
+      "propertyType": "apartment",
+      "energyRating": "B",
+      "serviceCharges": 85,
+      "availability": "Viewing by appointment; fictional availability only.",
+      "description": "Riverside two-bedroom apartment in New Belgrade, Belgrade. 82 m² with parking, balcony, elevator. Demo listing for comparing location, budget and running costs; no real address or owner details.",
+      "url": "https://example.invalid/properties/belgrade-riverside-201"
+    },
+    {
+      "id": "belgrade-zvezdara-202",
+      "title": "Bright family apartment",
+      "city": "Belgrade",
+      "neighborhood": "Zvezdara",
+      "price": 179000,
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "area": 68,
+      "features": [
+        "Parking",
+        "Balcony",
+        "Storage"
+      ],
+      "listingType": "sale",
+      "propertyType": "apartment",
+      "energyRating": "C",
+      "serviceCharges": 60,
+      "availability": "Viewing by appointment; fictional availability only.",
+      "description": "Bright family apartment in Zvezdara, Belgrade. 68 m² with parking, balcony, storage. Demo listing for comparing location, budget and running costs; no real address or owner details.",
+      "url": "https://example.invalid/properties/belgrade-zvezdara-202"
+    },
+    {
+      "id": "belgrade-vozdovac-203",
+      "title": "Garden-view family home",
+      "city": "Belgrade",
+      "neighborhood": "Vozdovac",
+      "price": 239000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "area": 105,
+      "features": [
+        "Parking",
+        "Garden",
+        "Storage"
+      ],
+      "listingType": "sale",
+      "propertyType": "apartment",
+      "energyRating": "B",
+      "serviceCharges": 70,
+      "availability": "Viewing by appointment; fictional availability only.",
+      "description": "Garden-view family home in Vozdovac, Belgrade. 105 m² with parking, garden, storage. Demo listing for comparing location, budget and running costs; no real address or owner details.",
+      "url": "https://example.invalid/properties/belgrade-vozdovac-203"
+    },
+    {
+      "id": "belgrade-dorcol-204",
+      "title": "Historic Dorcol loft",
+      "city": "Belgrade",
+      "neighborhood": "Dorcol",
+      "price": 245000,
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "area": 75,
+      "features": [
+        "Elevator",
+        "Balcony"
+      ],
+      "listingType": "sale",
+      "propertyType": "apartment",
+      "energyRating": "D",
+      "serviceCharges": 90,
+      "availability": "Viewing by appointment; fictional availability only.",
+      "description": "Historic Dorcol loft in Dorcol, Belgrade. 75 m² with elevator, balcony. Demo listing for comparing location, budget and running costs; no real address or owner details.",
+      "url": "https://example.invalid/properties/belgrade-dorcol-204"
+    },
+    {
+      "id": "belgrade-vracar-205",
+      "title": "Vracar boutique residence",
+      "city": "Belgrade",
+      "neighborhood": "Vracar",
+      "price": 329000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "area": 112,
+      "features": [
+        "Parking",
+        "Balcony",
+        "Elevator"
+      ],
+      "listingType": "sale",
+      "propertyType": "apartment",
+      "energyRating": "A",
+      "serviceCharges": 120,
+      "availability": "Viewing by appointment; fictional availability only.",
+      "description": "Vracar boutique residence in Vracar, Belgrade. 112 m² with parking, balcony, elevator. Demo listing for comparing location, budget and running costs; no real address or owner details.",
+      "url": "https://example.invalid/properties/belgrade-vracar-205"
+    },
+    {
+      "id": "belgrade-dedinje-206",
+      "title": "Detached garden house",
+      "city": "Belgrade",
+      "neighborhood": "Dedinje",
+      "price": 465000,
+      "bedrooms": 4,
+      "bathrooms": 3,
+      "area": 210,
+      "features": [
+        "Parking",
+        "Garden",
+        "Garage"
+      ],
+      "listingType": "sale",
+      "propertyType": "house",
+      "energyRating": "B",
+      "serviceCharges": 140,
+      "availability": "Viewing by appointment; fictional availability only.",
+      "description": "Detached garden house in Dedinje, Belgrade. 210 m² with parking, garden, garage. Demo listing for comparing location, budget and running costs; no real address or owner details.",
+      "url": "https://example.invalid/properties/belgrade-dedinje-206"
+    },
+    {
+      "id": "novisad-liman-207",
+      "title": "Liman park-side apartment",
+      "city": "Novi Sad",
+      "neighborhood": "Liman",
+      "price": 159000,
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "area": 72,
+      "features": [
+        "Parking",
+        "Balcony",
+        "Elevator"
+      ],
+      "listingType": "sale",
+      "propertyType": "apartment",
+      "energyRating": "B",
+      "serviceCharges": 55,
+      "availability": "Viewing by appointment; fictional availability only.",
+      "description": "Liman park-side apartment in Liman, Novi Sad. 72 m² with parking, balcony, elevator. Demo listing for comparing location, budget and running costs; no real address or owner details.",
+      "url": "https://example.invalid/properties/novisad-liman-207"
+    },
+    {
+      "id": "novisad-center-208",
+      "title": "Central studio apartment",
+      "city": "Novi Sad",
+      "neighborhood": "Center",
+      "price": 98000,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "area": 38,
+      "features": [
+        "Elevator"
+      ],
+      "listingType": "sale",
+      "propertyType": "apartment",
+      "energyRating": "C",
+      "serviceCharges": 40,
+      "availability": "Viewing by appointment; fictional availability only.",
+      "description": "Central studio apartment in Center, Novi Sad. 38 m² with elevator. Demo listing for comparing location, budget and running costs; no real address or owner details.",
+      "url": "https://example.invalid/properties/novisad-center-208"
+    },
+    {
+      "id": "belgrade-waterfront-rental",
+      "title": "Waterfront rental apartment",
+      "city": "Belgrade",
+      "neighborhood": "Waterfront",
+      "price": 1200,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "area": 88,
+      "features": [
+        "Parking",
+        "Balcony",
+        "Elevator",
+        "Furnished"
+      ],
+      "listingType": "rent",
+      "propertyType": "apartment",
+      "energyRating": "A",
+      "serviceCharges": 100,
+      "availability": "Viewing by appointment; fictional availability only.",
+      "description": "Waterfront rental apartment in Waterfront, Belgrade. 88 m² with parking, balcony, elevator, furnished. Demo listing for comparing location, budget and running costs; no real address or owner details.",
+      "url": "https://example.invalid/properties/belgrade-waterfront-rental"
+    },
+    {
+      "id": "belgrade-zemun-rental",
+      "title": "Quiet Zemun rental",
+      "city": "Belgrade",
+      "neighborhood": "Zemun",
+      "price": 750,
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "area": 70,
+      "features": [
+        "Parking",
+        "Garden",
+        "Furnished"
+      ],
+      "listingType": "rent",
+      "propertyType": "apartment",
+      "energyRating": "B",
+      "serviceCharges": 55,
+      "availability": "Viewing by appointment; fictional availability only.",
+      "description": "Quiet Zemun rental in Zemun, Belgrade. 70 m² with parking, garden, furnished. Demo listing for comparing location, budget and running costs; no real address or owner details.",
+      "url": "https://example.invalid/properties/belgrade-zemun-rental"
+    },
+    {
+      "id": "belgrade-office-211",
+      "title": "Business district office",
+      "city": "Belgrade",
+      "neighborhood": "New Belgrade",
+      "price": 1850,
+      "bedrooms": 0,
+      "bathrooms": 2,
+      "area": 130,
+      "features": [
+        "Parking",
+        "Elevator",
+        "Air conditioning"
+      ],
+      "listingType": "rent",
+      "propertyType": "office",
+      "energyRating": "B",
+      "serviceCharges": 170,
+      "availability": "Viewing by appointment; fictional availability only.",
+      "description": "Business district office in New Belgrade, Belgrade. 130 m² with parking, elevator, air conditioning. Demo listing for comparing location, budget and running costs; no real address or owner details.",
+      "url": "https://example.invalid/properties/belgrade-office-211"
+    },
+    {
+      "id": "novisad-house-212",
+      "title": "Suburban family house",
+      "city": "Novi Sad",
+      "neighborhood": "Petrovaradin",
+      "price": 225000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "area": 140,
+      "features": [
+        "Parking",
+        "Garden",
+        "Garage"
+      ],
+      "listingType": "sale",
+      "propertyType": "house",
+      "energyRating": "C",
+      "serviceCharges": 80,
+      "availability": "Viewing by appointment; fictional availability only.",
+      "description": "Suburban family house in Petrovaradin, Novi Sad. 140 m² with parking, garden, garage. Demo listing for comparing location, budget and running costs; no real address or owner details.",
+      "url": "https://example.invalid/properties/novisad-house-212"
+    }
+  ]
+}

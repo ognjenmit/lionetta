@@ -9,7 +9,18 @@
       "transmission": "automatic",
       "fuel": "diesel",
       "year": 2020,
-      "url": "https://example.invalid/vehicles/bmw-320d-001"
+      "url": "https://example.invalid/vehicles/bmw-320d-001",
+      "bodyType": "saloon",
+      "color": "Black",
+      "seats": 5,
+      "features": [
+        "Parking sensors",
+        "Heated seats",
+        "Apple CarPlay",
+        "Adaptive cruise control"
+      ],
+      "description": "Fictional 2020 BMW 3 Series 320d from Rivermore with a documented inspection. Prepared for a test drive.",
+      "serviceHistory": "Full service history; last demo inspection at 30,000 km."
     },
     {
       "id": "bmw-318i-002",
@@ -20,7 +31,18 @@
       "transmission": "automatic",
       "fuel": "petrol",
       "year": 2019,
-      "url": "https://example.invalid/vehicles/bmw-318i-002"
+      "url": "https://example.invalid/vehicles/bmw-318i-002",
+      "bodyType": "saloon",
+      "color": "Pearl white",
+      "seats": 5,
+      "features": [
+        "Rear camera",
+        "Navigation",
+        "Bluetooth",
+        "LED headlights"
+      ],
+      "description": "Fictional 2019 BMW 3 Series 318i from Rivermore with a documented inspection. Prepared for a test drive.",
+      "serviceHistory": "Dealer service records; no accident recorded in this fictional dataset."
     },
     {
       "id": "bmw-320i-003",
@@ -31,7 +53,18 @@
       "transmission": "automatic",
       "fuel": "petrol",
       "year": 2020,
-      "url": "https://example.invalid/vehicles/bmw-320i-003"
+      "url": "https://example.invalid/vehicles/bmw-320i-003",
+      "bodyType": "saloon",
+      "color": "Graphite",
+      "seats": 5,
+      "features": [
+        "Parking sensors",
+        "Dual-zone climate control",
+        "Navigation",
+        "Lane assist"
+      ],
+      "description": "Fictional 2020 BMW 3 Series 320i from Rivermore with a documented inspection. Prepared for a test drive.",
+      "serviceHistory": "Dealer service records; no accident recorded in this fictional dataset."
     },
     {
       "id": "delta-bmw-330i",
@@ -42,7 +75,18 @@
       "transmission": "automatic",
       "fuel": "petrol",
       "year": 2021,
-      "url": "https://example.invalid/vehicles/delta-bmw-330i"
+      "url": "https://example.invalid/vehicles/delta-bmw-330i",
+      "bodyType": "saloon",
+      "color": "Silver",
+      "seats": 5,
+      "features": [
+        "Parking sensors",
+        "Heated seats",
+        "Apple CarPlay",
+        "Adaptive cruise control"
+      ],
+      "description": "Fictional 2021 BMW 3 Series 330i from Rivermore with a documented inspection. Prepared for a test drive.",
+      "serviceHistory": "Dealer service records; no accident recorded in this fictional dataset."
     },
     {
       "id": "delta-bmw-320d-high-mileage",
@@ -53,7 +97,18 @@
       "transmission": "automatic",
       "fuel": "diesel",
       "year": 2019,
-      "url": "https://example.invalid/vehicles/delta-bmw-320d-high-mileage"
+      "url": "https://example.invalid/vehicles/delta-bmw-320d-high-mileage",
+      "bodyType": "saloon",
+      "color": "Black",
+      "seats": 5,
+      "features": [
+        "Rear camera",
+        "Navigation",
+        "Bluetooth",
+        "LED headlights"
+      ],
+      "description": "Fictional 2019 BMW 3 Series 320d from Rivermore with a documented inspection. Prepared for a test drive.",
+      "serviceHistory": "Full service history; last demo inspection at 30,000 km."
     },
     {
       "id": "delta-bmw-318d-manual",
@@ -64,7 +119,18 @@
       "transmission": "manual",
       "fuel": "diesel",
       "year": 2019,
-      "url": "https://example.invalid/vehicles/delta-bmw-318d-manual"
+      "url": "https://example.invalid/vehicles/delta-bmw-318d-manual",
+      "bodyType": "saloon",
+      "color": "Pearl white",
+      "seats": 5,
+      "features": [
+        "Parking sensors",
+        "Dual-zone climate control",
+        "Navigation",
+        "Lane assist"
+      ],
+      "description": "Fictional 2019 BMW 3 Series 318d from Rivermore with a documented inspection. Prepared for a test drive.",
+      "serviceHistory": "Dealer service records; no accident recorded in this fictional dataset."
     },
     {
       "id": "delta-audi-a4",
@@ -75,7 +141,18 @@
       "transmission": "automatic",
       "fuel": "petrol",
       "year": 2020,
-      "url": "https://example.invalid/vehicles/delta-audi-a4"
+      "url": "https://example.invalid/vehicles/delta-audi-a4",
+      "bodyType": "saloon",
+      "color": "Graphite",
+      "seats": 5,
+      "features": [
+        "Parking sensors",
+        "Heated seats",
+        "Apple CarPlay",
+        "Adaptive cruise control"
+      ],
+      "description": "Fictional 2020 Audi A4 35 TFSI from Rivermore with a documented inspection. Prepared for a test drive.",
+      "serviceHistory": "Dealer service records; no accident recorded in this fictional dataset."
     },
     {
       "id": "delta-vw-golf",
@@ -86,7 +163,194 @@
       "transmission": "automatic",
       "fuel": "petrol",
       "year": 2019,
-      "url": "https://example.invalid/vehicles/delta-vw-golf"
+      "url": "https://example.invalid/vehicles/delta-vw-golf",
+      "bodyType": "saloon",
+      "color": "Silver",
+      "seats": 5,
+      "features": [
+        "Rear camera",
+        "Navigation",
+        "Bluetooth",
+        "LED headlights"
+      ],
+      "description": "Fictional 2019 Volkswagen Golf 1.5 TSI from Rivermore with a documented inspection. Prepared for a test drive.",
+      "serviceHistory": "Dealer service records; no accident recorded in this fictional dataset."
+    },
+    {
+      "id": "rivermore-audi-q5",
+      "brand": "Audi",
+      "model": "Q5 40 TDI",
+      "price": 34900,
+      "mileage": 41000,
+      "fuel": "diesel",
+      "year": 2021,
+      "bodyType": "SUV",
+      "transmission": "automatic",
+      "url": "https://example.invalid/vehicles/rivermore-audi-q5",
+      "color": "Black",
+      "seats": 5,
+      "features": [
+        "Parking sensors",
+        "Dual-zone climate control",
+        "Navigation",
+        "Lane assist"
+      ],
+      "description": "Fictional 2021 Audi Q5 40 TDI from Rivermore with a documented inspection. Prepared for a test drive.",
+      "serviceHistory": "Full service history; last demo inspection at 30,000 km."
+    },
+    {
+      "id": "rivermore-volvo-xc40",
+      "brand": "Volvo",
+      "model": "XC40 Recharge",
+      "price": 32900,
+      "mileage": 22000,
+      "fuel": "electric",
+      "year": 2022,
+      "bodyType": "SUV",
+      "transmission": "automatic",
+      "url": "https://example.invalid/vehicles/rivermore-volvo-xc40",
+      "color": "Pearl white",
+      "seats": 5,
+      "features": [
+        "Parking sensors",
+        "Heated seats",
+        "Apple CarPlay",
+        "Adaptive cruise control"
+      ],
+      "description": "Fictional 2022 Volvo XC40 Recharge from Rivermore with a documented inspection. Includes charging cable; home charger sold separately.",
+      "serviceHistory": "Dealer service records; no accident recorded in this fictional dataset."
+    },
+    {
+      "id": "rivermore-mercedes-c200",
+      "brand": "Mercedes",
+      "model": "C-Class C200",
+      "price": 26900,
+      "mileage": 36000,
+      "fuel": "petrol",
+      "year": 2020,
+      "bodyType": "saloon",
+      "transmission": "automatic",
+      "url": "https://example.invalid/vehicles/rivermore-mercedes-c200",
+      "color": "Graphite",
+      "seats": 5,
+      "features": [
+        "Rear camera",
+        "Navigation",
+        "Bluetooth",
+        "LED headlights"
+      ],
+      "description": "Fictional 2020 Mercedes C-Class C200 from Rivermore with a documented inspection. Prepared for a test drive.",
+      "serviceHistory": "Dealer service records; no accident recorded in this fictional dataset."
+    },
+    {
+      "id": "rivermore-toyota-rav4",
+      "brand": "Toyota",
+      "model": "RAV4 Hybrid",
+      "price": 28900,
+      "mileage": 47000,
+      "fuel": "hybrid",
+      "year": 2021,
+      "bodyType": "SUV",
+      "transmission": "automatic",
+      "url": "https://example.invalid/vehicles/rivermore-toyota-rav4",
+      "color": "Silver",
+      "seats": 5,
+      "features": [
+        "Parking sensors",
+        "Dual-zone climate control",
+        "Navigation",
+        "Lane assist"
+      ],
+      "description": "Fictional 2021 Toyota RAV4 Hybrid from Rivermore with a documented inspection. Prepared for a test drive.",
+      "serviceHistory": "Dealer service records; no accident recorded in this fictional dataset."
+    },
+    {
+      "id": "rivermore-skoda-octavia",
+      "brand": "Skoda",
+      "model": "Octavia Estate",
+      "price": 18900,
+      "mileage": 38000,
+      "fuel": "diesel",
+      "year": 2020,
+      "bodyType": "estate",
+      "transmission": "automatic",
+      "url": "https://example.invalid/vehicles/rivermore-skoda-octavia",
+      "color": "Black",
+      "seats": 5,
+      "features": [
+        "Parking sensors",
+        "Heated seats",
+        "Apple CarPlay",
+        "Adaptive cruise control"
+      ],
+      "description": "Fictional 2020 Skoda Octavia Estate from Rivermore with a documented inspection. Prepared for a test drive.",
+      "serviceHistory": "Full service history; last demo inspection at 30,000 km."
+    },
+    {
+      "id": "rivermore-tesla-model-y",
+      "brand": "Tesla",
+      "model": "Model Y Long Range",
+      "price": 36900,
+      "mileage": 29000,
+      "fuel": "electric",
+      "year": 2022,
+      "bodyType": "SUV",
+      "transmission": "automatic",
+      "url": "https://example.invalid/vehicles/rivermore-tesla-model-y",
+      "color": "Pearl white",
+      "seats": 5,
+      "features": [
+        "Rear camera",
+        "Navigation",
+        "Bluetooth",
+        "LED headlights"
+      ],
+      "description": "Fictional 2022 Tesla Model Y Long Range from Rivermore with a documented inspection. Includes charging cable; home charger sold separately.",
+      "serviceHistory": "Dealer service records; no accident recorded in this fictional dataset."
+    },
+    {
+      "id": "rivermore-vw-id3",
+      "brand": "Volkswagen",
+      "model": "ID.3 Pro",
+      "price": 21900,
+      "mileage": 34000,
+      "fuel": "electric",
+      "year": 2021,
+      "bodyType": "hatchback",
+      "transmission": "automatic",
+      "url": "https://example.invalid/vehicles/rivermore-vw-id3",
+      "color": "Graphite",
+      "seats": 5,
+      "features": [
+        "Parking sensors",
+        "Dual-zone climate control",
+        "Navigation",
+        "Lane assist"
+      ],
+      "description": "Fictional 2021 Volkswagen ID.3 Pro from Rivermore with a documented inspection. Includes charging cable; home charger sold separately.",
+      "serviceHistory": "Dealer service records; no accident recorded in this fictional dataset."
+    },
+    {
+      "id": "rivermore-bmw-x1",
+      "brand": "BMW",
+      "model": "X1 sDrive18d",
+      "price": 23900,
+      "mileage": 44000,
+      "fuel": "diesel",
+      "year": 2020,
+      "bodyType": "SUV",
+      "transmission": "automatic",
+      "url": "https://example.invalid/vehicles/rivermore-bmw-x1",
+      "color": "Silver",
+      "seats": 5,
+      "features": [
+        "Parking sensors",
+        "Heated seats",
+        "Apple CarPlay",
+        "Adaptive cruise control"
+      ],
+      "description": "Fictional 2020 BMW X1 sDrive18d from Rivermore with a documented inspection. Prepared for a test drive.",
+      "serviceHistory": "Dealer service records; no accident recorded in this fictional dataset."
     }
   ],
   "northside-motors": [
@@ -99,7 +363,18 @@
       "transmission": "automatic",
       "fuel": "petrol",
       "year": 2019,
-      "url": "https://example.invalid/vehicles/northside-bmw-320i"
+      "url": "https://example.invalid/vehicles/northside-bmw-320i",
+      "bodyType": "saloon",
+      "color": "Black",
+      "seats": 5,
+      "features": [
+        "Parking sensors",
+        "Heated seats",
+        "Apple CarPlay",
+        "Adaptive cruise control"
+      ],
+      "description": "Fictional 2019 BMW 3 Series 320i from Northside with a documented inspection. Prepared for a test drive.",
+      "serviceHistory": "Full service history; last demo inspection at 30,000 km."
     },
     {
       "id": "northside-toyota-corolla",
@@ -110,7 +385,18 @@
       "transmission": "automatic",
       "fuel": "hybrid",
       "year": 2021,
-      "url": "https://example.invalid/vehicles/northside-toyota-corolla"
+      "url": "https://example.invalid/vehicles/northside-toyota-corolla",
+      "bodyType": "saloon",
+      "color": "Pearl white",
+      "seats": 5,
+      "features": [
+        "Rear camera",
+        "Navigation",
+        "Bluetooth",
+        "LED headlights"
+      ],
+      "description": "Fictional 2021 Toyota Corolla Hybrid from Northside with a documented inspection. Prepared for a test drive.",
+      "serviceHistory": "Dealer service records; no accident recorded in this fictional dataset."
     },
     {
       "id": "northside-tesla-model-3",
@@ -121,7 +407,84 @@
       "transmission": "automatic",
       "fuel": "electric",
       "year": 2021,
-      "url": "https://example.invalid/vehicles/northside-tesla-model-3"
+      "url": "https://example.invalid/vehicles/northside-tesla-model-3",
+      "bodyType": "saloon",
+      "color": "Graphite",
+      "seats": 5,
+      "features": [
+        "Parking sensors",
+        "Dual-zone climate control",
+        "Navigation",
+        "Lane assist"
+      ],
+      "description": "Fictional 2021 Tesla Model 3 from Northside with a documented inspection. Includes charging cable; home charger sold separately.",
+      "serviceHistory": "Dealer service records; no accident recorded in this fictional dataset."
+    },
+    {
+      "id": "northside-audi-a3",
+      "brand": "Audi",
+      "model": "A3 Sportback",
+      "price": 20900,
+      "mileage": 31000,
+      "fuel": "petrol",
+      "year": 2020,
+      "bodyType": "hatchback",
+      "transmission": "automatic",
+      "url": "https://example.invalid/vehicles/northside-audi-a3",
+      "color": "Silver",
+      "seats": 5,
+      "features": [
+        "Parking sensors",
+        "Heated seats",
+        "Apple CarPlay",
+        "Adaptive cruise control"
+      ],
+      "description": "Fictional 2020 Audi A3 Sportback from Northside with a documented inspection. Prepared for a test drive.",
+      "serviceHistory": "Dealer service records; no accident recorded in this fictional dataset."
+    },
+    {
+      "id": "northside-volvo-v60",
+      "brand": "Volvo",
+      "model": "V60 Estate",
+      "price": 25900,
+      "mileage": 52000,
+      "fuel": "diesel",
+      "year": 2021,
+      "bodyType": "estate",
+      "transmission": "automatic",
+      "url": "https://example.invalid/vehicles/northside-volvo-v60",
+      "color": "Black",
+      "seats": 5,
+      "features": [
+        "Rear camera",
+        "Navigation",
+        "Bluetooth",
+        "LED headlights"
+      ],
+      "description": "Fictional 2021 Volvo V60 Estate from Northside with a documented inspection. Prepared for a test drive.",
+      "serviceHistory": "Full service history; last demo inspection at 30,000 km."
+    },
+    {
+      "id": "northside-toyota-yaris",
+      "brand": "Toyota",
+      "model": "Yaris Hybrid",
+      "price": 16900,
+      "mileage": 19000,
+      "fuel": "hybrid",
+      "year": 2022,
+      "bodyType": "hatchback",
+      "transmission": "automatic",
+      "url": "https://example.invalid/vehicles/northside-toyota-yaris",
+      "color": "Pearl white",
+      "seats": 5,
+      "features": [
+        "Parking sensors",
+        "Dual-zone climate control",
+        "Navigation",
+        "Lane assist"
+      ],
+      "description": "Fictional 2022 Toyota Yaris Hybrid from Northside with a documented inspection. Prepared for a test drive.",
+      "serviceHistory": "Dealer service records; no accident recorded in this fictional dataset."
     }
   ]
 }

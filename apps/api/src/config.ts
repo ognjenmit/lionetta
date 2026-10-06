@@ -7,6 +7,7 @@ const permissionSchema = z.object({ name: z.string().min(1), enabled: z.boolean(
 const tenantSchema = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/), name: z.string().min(1), brandName: z.string().min(1),
   primaryColor: z.string().regex(/^#[0-9a-f]{6}$/i), systemPrompt: z.string().min(1), model: z.string().min(1),
+  domain: z.enum(["cars", "real-estate", "b2b"]).default("cars"),
   mcpServers: z.array(z.object({
     id: z.string().regex(/^[a-z0-9-]+$/), name: z.string(), url: z.url(), enabled: z.boolean(), tools: z.array(permissionSchema),
   })),

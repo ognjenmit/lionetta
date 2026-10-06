@@ -1,0 +1,174 @@
+{
+  "delta-motors": [
+    {
+      "id": "rivermore-1",
+      "title": "Warranty and inspection",
+      "content": "Every fictional vehicle includes a 12-month demo dealer warranty. Wear items are excluded. Inspection documents can be discussed but no real certificates exist.",
+      "tags": [
+        "warranty",
+        "inspection"
+      ]
+    },
+    {
+      "id": "rivermore-2",
+      "title": "Financing illustration",
+      "content": "Demo financing is calculated at 6% annual interest over 12–84 months, with optional deposit. No fees or residual value. It is not a binding lender offer.",
+      "tags": [
+        "finance",
+        "lease",
+        "deposit"
+      ]
+    },
+    {
+      "id": "rivermore-3",
+      "title": "Test drives and opening hours",
+      "content": "Demo opening hours: Monday–Friday 09:00–18:00, Saturday 10:00–14:00 Europe/Belgrade. Test drives require an appointment and driving licence. Create a demo CRM lead to express interest.",
+      "tags": [
+        "test drive",
+        "hours",
+        "appointment"
+      ]
+    },
+    {
+      "id": "rivermore-4",
+      "title": "Vehicle history and EV charging",
+      "content": "Service histories and equipment are stored on each vehicle. Electric cars include a charging cable; home charger is not included. All inventory descriptions are fictional.",
+      "tags": [
+        "history",
+        "electric",
+        "charging",
+        "features"
+      ]
+    }
+  ],
+  "northside-motors": [
+    {
+      "id": "northside-1",
+      "title": "Warranty and inspection",
+      "content": "Every fictional vehicle includes a 12-month demo dealer warranty. Wear items are excluded. Inspection documents can be discussed but no real certificates exist.",
+      "tags": [
+        "warranty",
+        "inspection"
+      ]
+    },
+    {
+      "id": "northside-2",
+      "title": "Financing illustration",
+      "content": "Demo financing is calculated at 6% annual interest over 12–84 months, with optional deposit. No fees or residual value. It is not a binding lender offer.",
+      "tags": [
+        "finance",
+        "lease",
+        "deposit"
+      ]
+    },
+    {
+      "id": "northside-3",
+      "title": "Test drives and opening hours",
+      "content": "Demo opening hours: Monday–Friday 09:00–18:00, Saturday 10:00–14:00 Europe/Belgrade. Test drives require an appointment and driving licence. Create a demo CRM lead to express interest.",
+      "tags": [
+        "test drive",
+        "hours",
+        "appointment"
+      ]
+    },
+    {
+      "id": "northside-4",
+      "title": "Vehicle history and EV charging",
+      "content": "Service histories and equipment are stored on each vehicle. Electric cars include a charging cable; home charger is not included. All inventory descriptions are fictional.",
+      "tags": [
+        "history",
+        "electric",
+        "charging",
+        "features"
+      ]
+    }
+  ],
+  "haven-estates": [
+    {
+      "id": "haven-1",
+      "title": "Buying costs",
+      "content": "Illustrative resale purchase costs: 2.5% transfer tax, 2% agency fee and EUR 800 legal/notary allowance, plus the asking price. New-build VAT and exemptions are not modeled. Use estimate_property_costs. This is a demo estimate, not tax or legal advice.",
+      "tags": [
+        "costs",
+        "tax",
+        "fees",
+        "purchase"
+      ]
+    },
+    {
+      "id": "haven-2",
+      "title": "Rental terms",
+      "content": "For demo rentals budget one month refundable deposit plus one month agency fee, first month rent and monthly service charges. Minimum lease: 12 months. Utilities are excluded; pets need landlord approval.",
+      "tags": [
+        "rent",
+        "deposit",
+        "pets",
+        "lease"
+      ]
+    },
+    {
+      "id": "haven-3",
+      "title": "Viewing requests",
+      "content": "Viewings are demo requests only. Ask for a name, email, property ID and preferred date/time including Europe/Belgrade. Request confirmation before storing the viewing request. No real calendar or owner is contacted.",
+      "tags": [
+        "viewing",
+        "appointment",
+        "availability"
+      ]
+    },
+    {
+      "id": "haven-4",
+      "title": "Areas and property checks",
+      "content": "New Belgrade: offices and newer apartments. Zvezdara and Vozdovac: family neighborhoods. Dorcol and Vracar: central amenities. Verify title, permits and condition before a real purchase; fixture data cannot establish these.",
+      "tags": [
+        "neighborhood",
+        "location",
+        "documents"
+      ]
+    }
+  ],
+  "atlas-wholesale": [
+    {
+      "id": "atlas-1",
+      "title": "Payment and quote terms",
+      "content": "Demo terms: 30% deposit and 70% before dispatch; approved accounts may request net 30 after review. Quotes are non-binding and valid for 14 days. A quote request never places an order or reserves stock.",
+      "tags": [
+        "payment",
+        "terms",
+        "quote"
+      ]
+    },
+    {
+      "id": "atlas-2",
+      "title": "Volume pricing and delivery",
+      "content": "Prices are EUR excluding VAT. Highest eligible quantity tier applies. Demo VAT is 20%; flat delivery is EUR 125 for a qualified order. Lead time is counted in calendar days. MOQ and available stock must be satisfied. Use quote_bulk_order for exact totals.",
+      "tags": [
+        "discount",
+        "delivery",
+        "VAT",
+        "lead time",
+        "quantity"
+      ]
+    },
+    {
+      "id": "atlas-3",
+      "title": "Samples and custom branding",
+      "content": "Sample requests are possible in a future real integration. Logo printing adds a fictional EUR 8 per unit and 7 days, but is excluded from standard tool quotes; do not silently add it.",
+      "tags": [
+        "sample",
+        "branding",
+        "custom"
+      ]
+    },
+    {
+      "id": "atlas-4",
+      "title": "Warranty and returns",
+      "content": "Warranty periods are product-specific. Demo B2B returns require prior approval; transit damage must be reported within 48 hours. All certification claims in this catalog are fictional.",
+      "tags": [
+        "warranty",
+        "returns",
+        "damage"
+      ]
+    }
+  ]
+}

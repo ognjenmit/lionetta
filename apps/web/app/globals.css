@@ -99,6 +99,18 @@ button { transition: background .18s, border-color .18s, transform .18s; }
 .dealer-switch { display: grid; gap: 8px; min-width: 175px; }
 .dealer-switch label { font-size: 9px; color: #8b859b; text-transform: uppercase; letter-spacing: 1.3px; }
 .dealer-switch select { color: #eee9f7; background: #14131e; border: 1px solid #81709845; border-radius: 8px; padding: 10px 12px; font-size: 11px; max-width: 100%; }
+.demo-scenarios { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 30px; }
+.scenario-card { display: flex; flex-direction: column; border: 1px solid #8668aa40; border-radius: 12px; padding: 23px; background: #10121c; min-width: 0; }
+.scenario-card[data-active="true"] { border-color: #79ff796b; background: linear-gradient(140deg, #14281e70, #151024); box-shadow: 0 0 22px #5aff680b; }
+.scenario-title { display: flex; align-items: center; gap: 10px; color: #c4a4ef; }
+.scenario-title svg { color: var(--green); width: 21px; flex-shrink: 0; }
+.scenario-title h3 { font-size: 17px; font-weight: 550; margin: 0; }
+.scenario-card > p { color: #a4a0b4; font-size: 12px; line-height: 1.75; }
+.scenario-card blockquote { margin: 5px 0 16px; border-left: 2px solid #9160cb; padding-left: 13px; color: #e1d8ed; font-size: 12px; line-height: 1.8; }
+.scenario-card ol { margin: auto 0 18px; padding-left: 19px; color: #9992ac; font-size: 11px; line-height: 2; }
+.scenario-card button { display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid #906ac357; border-radius: 7px; background: #1c172b; color: #dbcaef; padding: 11px; font-size: 11px; text-align: left; }
+.scenario-card button[aria-pressed="true"] { color: var(--green); border-color: #79ff794f; }
+.scenario-card button svg { width: 15px; height: 15px; }
 .client-frame { border-radius: 16px; overflow: hidden; border: 1px solid #8b87a94a; box-shadow: 0 30px 100px #0007, -6px 0 44px #674aff0c, 6px 0 44px #60ff6f09; background: #fbfcfe; color: #182131; color-scheme: light; }
 .frame-bar { height: 36px; background: #edf0f6; border-bottom: 1px solid #e1e5ed; display: flex; align-items: center; gap: 13px; padding: 0 17px; font-size: 9px; color: #7f8592; }
 .frame-dots { display: flex; gap: 5px; }
@@ -118,7 +130,7 @@ button { transition: background .18s, border-color .18s, transform .18s; }
 .client-hero { padding: 36px 28px 30px; position: relative; isolation: isolate; background: linear-gradient(130deg, #f0f2f8 5%, #f8f9fb 65%, #e8eaf2); min-height: 244px; overflow: hidden; }
 .client-hero::before { content: ""; position: absolute; z-index: -1; inset: 0 0 0 30%; opacity: .55; background: repeating-linear-gradient(145deg, transparent 0 75px, #d9deec50 75px 140px, transparent 140px 190px); }
 .client-hero > .eyebrow { color: #858a9e; font-size: 7px; letter-spacing: 1.8px; position: relative; z-index: 1; }
-.client-hero h3 { font-family: Georgia, "Times New Roman", serif; font-size: 43px; font-weight: 400; line-height: 1.12; letter-spacing: -1px; margin: 15px 0 13px; position: relative; z-index: 1; }
+.client-hero h3 { font-family: Georgia, "Times New Roman", serif; font-size: 43px; font-weight: 400; line-height: 1.12; letter-spacing: -1px; margin: 15px 0 13px; position: relative; z-index: 1; max-width: 390px; }
 .client-hero h3 em { font-style: normal; }
 .client-hero > p:last-of-type { color: #858c9b; font-size: 10px; line-height: 1.8; position: relative; z-index: 1; }
 .client-hero-car { position: absolute; right: 18px; top: 75px; width: 195px; color: #adb4c750; transform: rotate(-10deg); }
@@ -169,6 +181,17 @@ button { transition: background .18s, border-color .18s, transform .18s; }
 .vehicle-year { font-size: 8px; color: #8892a5; margin: 0 0 5px; }
 .vehicle-body h3 { font-size: 13px; color: #202c41; font-weight: 600; margin: 0 0 8px; line-height: 1.4; }
 .vehicle-price { font-size: 19px; font-weight: 600; color: #1e293a; letter-spacing: -.5px; }
+.vehicle-price small { font-size: 9px; color: #838ba0; font-weight: 400; letter-spacing: 0; }
+.property-visual { background: linear-gradient(150deg, #d8e8e2, #f0f5f1); color: #628577; }
+.product-visual { background: linear-gradient(150deg, #e4dff1, #f4f1f8); color: #8b77aa; }
+.vehicle-visual.property-visual svg, .vehicle-visual.product-visual svg { width: 44px; height: 44px; }
+.catalog-price-note { font-size: 8px; color: #818da1; margin: 6px 0; }
+.quote-results { display: grid; gap: 8px; margin-top: 13px; }
+.quote-card { padding: 13px; background: #f2f6f4; border: 1px solid #d6e4de; border-radius: 8px; display: grid; gap: 7px; overflow-wrap: anywhere; }
+.quote-card > span { font-size: 10px; color: #688578; }
+.quote-card > strong { font-size: 17px; color: #2f5b48; }
+.quote-card > small { font-size: 9px; color: #6c7f75; }
+.quote-card p { font-size: 9px; line-height: 1.7; color: #72877c; margin: 0; }
 .vehicle-specs { display: flex; flex-wrap: wrap; gap: 4px; margin: 10px 0; }
 .vehicle-specs span { font-size: 8px; background: #f2f4f8; color: #627087; border-radius: 3px; padding: 4px 5px; }
 .vehicle-details { padding-top: 9px; border-top: 1px solid #edf0f5; font-size: 9px; color: #707f96; }
@@ -252,6 +275,8 @@ textarea::placeholder { color: #a1a7b8; }
   .vehicle-price { font-size: 16px; }
 }
 @media (max-width: 960px) {
+  .demo-scenarios { grid-template-columns: minmax(0, 1fr); }
+  .scenario-card { padding: 20px; }
   .site-header { height: 96px; gap: 20px; }
   .brand-type strong { font-size: 25px; }
   .brand-type small { font-size: 6px; letter-spacing: 1.4px; }

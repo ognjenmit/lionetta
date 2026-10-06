@@ -22,6 +22,11 @@
             "name": "get_vehicle",
             "enabled": true,
             "requiresConfirmation": false
+          },
+          {
+            "name": "search_knowledge",
+            "enabled": true,
+            "requiresConfirmation": false
           }
         ]
       },
@@ -61,7 +66,8 @@
           }
         ]
       }
-    ]
+    ],
+    "domain": "cars"
   },
   {
     "id": "northside-motors",
@@ -84,6 +90,11 @@
           },
           {
             "name": "get_vehicle",
+            "enabled": true,
+            "requiresConfirmation": false
+          },
+          {
+            "name": "search_knowledge",
             "enabled": true,
             "requiresConfirmation": false
           }
@@ -120,6 +131,137 @@
           },
           {
             "name": "list_leads",
+            "enabled": true,
+            "requiresConfirmation": false
+          }
+        ]
+      }
+    ],
+    "domain": "cars"
+  },
+  {
+    "id": "haven-estates",
+    "name": "Haven Estates",
+    "brandName": "Haven Property Advisor",
+    "domain": "real-estate",
+    "primaryColor": "#355c55",
+    "model": "gpt-4.1-mini",
+    "systemPrompt": "Help buyers and renters compare fictional properties in Belgrade and Novi Sad. Use listings for facts, explain purchase versus monthly rental prices, calculate costs with tools, and search knowledge for policies. Never invent an address, legal status or availability. Ask for confirmation before a demo viewing request.",
+    "mcpServers": [
+      {
+        "id": "inventory",
+        "name": "Inventory and knowledge",
+        "url": "http://127.0.0.1:8001/mcp",
+        "enabled": true,
+        "tools": [
+          {
+            "name": "search_properties",
+            "enabled": true,
+            "requiresConfirmation": false
+          },
+          {
+            "name": "get_property",
+            "enabled": true,
+            "requiresConfirmation": false
+          },
+          {
+            "name": "search_knowledge",
+            "enabled": true,
+            "requiresConfirmation": false
+          }
+        ]
+      },
+      {
+        "id": "pricing",
+        "name": "Calculations and pricing",
+        "url": "http://127.0.0.1:8002/mcp",
+        "enabled": true,
+        "tools": [
+          {
+            "name": "estimate_property_costs",
+            "enabled": true,
+            "requiresConfirmation": false
+          }
+        ]
+      },
+      {
+        "id": "crm",
+        "name": "Local requests",
+        "url": "http://127.0.0.1:8003/mcp",
+        "enabled": true,
+        "tools": [
+          {
+            "name": "request_viewing",
+            "enabled": true,
+            "requiresConfirmation": true
+          },
+          {
+            "name": "list_requests",
+            "enabled": true,
+            "requiresConfirmation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "atlas-wholesale",
+    "name": "Atlas Wholesale",
+    "brandName": "Atlas Business Advisor",
+    "domain": "b2b",
+    "primaryColor": "#494576",
+    "model": "gpt-4.1-mini",
+    "systemPrompt": "Help B2B buyers compare fictional workplace and industrial products. Retrieve specs, stock, minimum order, volume tiers and lead times. Use quote_bulk_order for exact totals, 20% demo VAT and delivery. A quote is non-binding and never reserves stock or creates an order. Ask for confirmation before a demo quote request.",
+    "mcpServers": [
+      {
+        "id": "inventory",
+        "name": "Inventory and knowledge",
+        "url": "http://127.0.0.1:8001/mcp",
+        "enabled": true,
+        "tools": [
+          {
+            "name": "search_products",
+            "enabled": true,
+            "requiresConfirmation": false
+          },
+          {
+            "name": "get_product",
+            "enabled": true,
+            "requiresConfirmation": false
+          },
+          {
+            "name": "search_knowledge",
+            "enabled": true,
+            "requiresConfirmation": false
+          }
+        ]
+      },
+      {
+        "id": "pricing",
+        "name": "Calculations and pricing",
+        "url": "http://127.0.0.1:8002/mcp",
+        "enabled": true,
+        "tools": [
+          {
+            "name": "quote_bulk_order",
+            "enabled": true,
+            "requiresConfirmation": false
+          }
+        ]
+      },
+      {
+        "id": "crm",
+        "name": "Local requests",
+        "url": "http://127.0.0.1:8003/mcp",
+        "enabled": true,
+        "tools": [
+          {
+            "name": "request_quote",
+            "enabled": true,
+            "requiresConfirmation": true
+          },
+          {
+            "name": "list_requests",
             "enabled": true,
             "requiresConfirmation": false
           }

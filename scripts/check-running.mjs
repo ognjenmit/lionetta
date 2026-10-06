@@ -26,4 +26,11 @@ assert.equal(result.vehicles?.length, 3, "Expected three matching fixture vehicl
 assert.ok(result.vehicles.every((vehicle) => vehicle.brand === "BMW" && vehicle.price < 25000 && vehicle.mileage < 50000 && vehicle.transmission === "automatic"));
 assert.ok(result.toolCalls.some((tool) => tool.name === "inventory.search_vehicles" && tool.status === "success"));
 assert.ok(result.toolCalls.some((tool) => tool.name === "pricing.get_price" && tool.status === "success"));
-console.log(`Running stack passed: Next.js, API, three MCP servers; BMW query returned ${result.vehicles.length} matching fixture vehicles (${result.mode}).`);
+for (const example of [{ tenantId: "haven-estates", prompt: "Find apartments for sale in Belgrade under €250,000 with 2 bedrooms and parking. Estimate costs.", field: "properties" },
+  { tenantId: "atlas-wholesale", prompt: "We need 500 office chairs. Compare volume prices.", field: "products" }]) {
+  const request = await fetch(`${web}/api/chat`, { method: "POST", signal: AbortSignal.timeout(60_000),
+    headers: { "Content-Type": "application/json", "X-Amzn-Bedrock-AgentCore-Runtime-Session-Id": randomUUID() }, body: JSON.stringify({ tenantId: example.tenantId, prompt: example.prompt }) });
+  assert.ok(request.ok, `${example.tenantId} example failed`);
+  const data = await request.json(); assert.ok(data[example.field]?.length > 0, `No source records for ${example.tenantId}`);
+}
+console.log(`Running stack passed: Next.js, API, three MCP servers, BMW search, real estate, and B2B wholesale (${result.mode}).`);

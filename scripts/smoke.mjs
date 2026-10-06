@@ -44,10 +44,10 @@ try {
   const page = await fetch(base);
   assert.equal(page.status, 200);
   assert.match(await page.text(), /Lionetta/);
-  const invoke = async (prompt, confirmationId) => {
+  const invoke = async (prompt, confirmationId, tenantId = "delta-motors") => {
     const response = await fetch(`${base}/api/chat`, {
       method: "POST", headers: { "Content-Type": "application/json", "X-Amzn-Bedrock-AgentCore-Runtime-Session-Id": sessionId },
-      body: JSON.stringify({ prompt, tenantId: "delta-motors", ...(confirmationId ? { confirmationId } : {}) }),
+      body: JSON.stringify({ prompt, tenantId, ...(confirmationId ? { confirmationId } : {}) }),
     });
     const data = await response.json();
     assert.equal(response.status, 200, JSON.stringify(data));
@@ -62,7 +62,11 @@ try {
   assert.ok(pending.pendingConfirmation?.id);
   const confirmed = await invoke("confirm", pending.pendingConfirmation.id);
   assert.ok(confirmed.toolCalls.some((tool) => tool.name === "crm.create_lead" && tool.status === "success"));
-  console.log("Smoke passed: compiled Next UI/proxy, API, three real MCP services, BMW search/prices, and confirmed CRM write.");
+  const homes = await invoke("Find apartments for sale in Belgrade under €250,000 with 2 bedrooms and parking. Estimate costs.", undefined, "haven-estates");
+  assert.equal(homes.properties.length, 3); assert.equal(homes.quotes.length, 3);
+  const bulk = await invoke("We need 500 office chairs. Compare volume prices.", undefined, "atlas-wholesale");
+  assert.equal(bulk.products.length, 2); assert.equal(bulk.quotes.find(quote => quote.product_id === "ergonomic-chair-pro").total, 63150);
+  console.log("Smoke passed: compiled Next UI/proxy, API, three MCP services, cars/pricing, property costs, wholesale totals, and confirmed CRM write.");
 } finally {
   child.kill("SIGTERM");
   const forced = setTimeout(() => child.kill("SIGKILL"), 7000).unref();

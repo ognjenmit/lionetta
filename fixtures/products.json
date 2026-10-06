@@ -1,0 +1,356 @@
+{
+  "atlas-wholesale": [
+    {
+      "id": "ergonomic-chair-pro",
+      "sku": "LN-CHR-001",
+      "name": "Ergonomic Chair Pro",
+      "category": "office chairs",
+      "unitPrice": 145,
+      "stock": 1500,
+      "minimumOrderQuantity": 25,
+      "leadTimeDays": 10,
+      "warrantyMonths": 36,
+      "priceBreaks": [
+        {
+          "minQuantity": 100,
+          "unitPrice": 125
+        },
+        {
+          "minQuantity": 250,
+          "unitPrice": 115
+        },
+        {
+          "minQuantity": 500,
+          "unitPrice": 105
+        }
+      ],
+      "specifications": {
+        "material": "Recycled mesh",
+        "capacity": "150 kg",
+        "adjustments": "Lumbar, seat height, 4D armrests",
+        "certification": "Demo EN 1335 specification"
+      },
+      "description": "Fictional contract supply of ergonomic chair pro for workplace projects. Volume tiers and stock are demo data. All unit prices exclude VAT and delivery.",
+      "url": "https://example.invalid/products/ergonomic-chair-pro"
+    },
+    {
+      "id": "ergonomic-chair-lite",
+      "sku": "LN-CHR-002",
+      "name": "Task Chair Lite",
+      "category": "office chairs",
+      "unitPrice": 99,
+      "stock": 2400,
+      "minimumOrderQuantity": 50,
+      "leadTimeDays": 7,
+      "warrantyMonths": 24,
+      "priceBreaks": [
+        {
+          "minQuantity": 100,
+          "unitPrice": 89
+        },
+        {
+          "minQuantity": 500,
+          "unitPrice": 75
+        },
+        {
+          "minQuantity": 1000,
+          "unitPrice": 69
+        }
+      ],
+      "specifications": {
+        "material": "Fabric",
+        "capacity": "120 kg",
+        "adjustments": "Height and tilt"
+      },
+      "description": "Fictional contract supply of task chair lite for workplace projects. Volume tiers and stock are demo data. All unit prices exclude VAT and delivery.",
+      "url": "https://example.invalid/products/ergonomic-chair-lite"
+    },
+    {
+      "id": "executive-chair",
+      "sku": "LN-CHR-003",
+      "name": "Executive Chair Comfort",
+      "category": "office chairs",
+      "unitPrice": 225,
+      "stock": 320,
+      "minimumOrderQuantity": 10,
+      "leadTimeDays": 21,
+      "warrantyMonths": 36,
+      "priceBreaks": [
+        {
+          "minQuantity": 50,
+          "unitPrice": 205
+        },
+        {
+          "minQuantity": 100,
+          "unitPrice": 189
+        }
+      ],
+      "specifications": {
+        "material": "Synthetic leather",
+        "capacity": "150 kg",
+        "adjustments": "Height, tilt, headrest"
+      },
+      "description": "Fictional contract supply of executive chair comfort for workplace projects. Volume tiers and stock are demo data. All unit prices exclude VAT and delivery.",
+      "url": "https://example.invalid/products/executive-chair"
+    },
+    {
+      "id": "standing-desk-140",
+      "sku": "LN-DSK-001",
+      "name": "Standing Desk 140",
+      "category": "desks",
+      "unitPrice": 299,
+      "stock": 800,
+      "minimumOrderQuantity": 10,
+      "leadTimeDays": 14,
+      "warrantyMonths": 60,
+      "priceBreaks": [
+        {
+          "minQuantity": 50,
+          "unitPrice": 279
+        },
+        {
+          "minQuantity": 200,
+          "unitPrice": 249
+        },
+        {
+          "minQuantity": 500,
+          "unitPrice": 229
+        }
+      ],
+      "specifications": {
+        "dimensions": "140 × 70 cm",
+        "height": "62–125 cm",
+        "motor": "Dual motor",
+        "capacity": "120 kg"
+      },
+      "description": "Fictional contract supply of standing desk 140 for workplace projects. Volume tiers and stock are demo data. All unit prices exclude VAT and delivery.",
+      "url": "https://example.invalid/products/standing-desk-140"
+    },
+    {
+      "id": "desk-basic-120",
+      "sku": "LN-DSK-002",
+      "name": "Contract Desk 120",
+      "category": "desks",
+      "unitPrice": 145,
+      "stock": 1800,
+      "minimumOrderQuantity": 25,
+      "leadTimeDays": 7,
+      "warrantyMonths": 24,
+      "priceBreaks": [
+        {
+          "minQuantity": 100,
+          "unitPrice": 129
+        },
+        {
+          "minQuantity": 500,
+          "unitPrice": 109
+        }
+      ],
+      "specifications": {
+        "dimensions": "120 × 60 cm",
+        "surface": "Oak laminate",
+        "frame": "Steel"
+      },
+      "description": "Fictional contract supply of contract desk 120 for workplace projects. Volume tiers and stock are demo data. All unit prices exclude VAT and delivery.",
+      "url": "https://example.invalid/products/desk-basic-120"
+    },
+    {
+      "id": "monitor-27-qhd",
+      "sku": "LN-MON-001",
+      "name": "27-inch QHD Business Monitor",
+      "category": "monitors",
+      "unitPrice": 219,
+      "stock": 1200,
+      "minimumOrderQuantity": 20,
+      "leadTimeDays": 10,
+      "warrantyMonths": 36,
+      "priceBreaks": [
+        {
+          "minQuantity": 100,
+          "unitPrice": 199
+        },
+        {
+          "minQuantity": 500,
+          "unitPrice": 179
+        }
+      ],
+      "specifications": {
+        "resolution": "2560 × 1440",
+        "ports": "USB-C 65W, HDMI, DisplayPort",
+        "panel": "IPS"
+      },
+      "description": "Fictional contract supply of 27-inch qhd business monitor for workplace projects. Volume tiers and stock are demo data. All unit prices exclude VAT and delivery.",
+      "url": "https://example.invalid/products/monitor-27-qhd"
+    },
+    {
+      "id": "laptop-business-14",
+      "sku": "LN-LAP-001",
+      "name": "14-inch Business Laptop",
+      "category": "laptops",
+      "unitPrice": 849,
+      "stock": 700,
+      "minimumOrderQuantity": 10,
+      "leadTimeDays": 14,
+      "warrantyMonths": 36,
+      "priceBreaks": [
+        {
+          "minQuantity": 50,
+          "unitPrice": 809
+        },
+        {
+          "minQuantity": 250,
+          "unitPrice": 749
+        },
+        {
+          "minQuantity": 500,
+          "unitPrice": 719
+        }
+      ],
+      "specifications": {
+        "ram": "16 GB",
+        "storage": "512 GB SSD",
+        "screen": "14-inch FHD",
+        "os": "Demo business OS license"
+      },
+      "description": "Fictional contract supply of 14-inch business laptop for workplace projects. Volume tiers and stock are demo data. All unit prices exclude VAT and delivery.",
+      "url": "https://example.invalid/products/laptop-business-14"
+    },
+    {
+      "id": "keyboard-wireless",
+      "sku": "LN-ACC-001",
+      "name": "Wireless Keyboard and Mouse Kit",
+      "category": "accessories",
+      "unitPrice": 39,
+      "stock": 4200,
+      "minimumOrderQuantity": 100,
+      "leadTimeDays": 5,
+      "warrantyMonths": 24,
+      "priceBreaks": [
+        {
+          "minQuantity": 500,
+          "unitPrice": 32
+        },
+        {
+          "minQuantity": 1000,
+          "unitPrice": 28
+        }
+      ],
+      "specifications": {
+        "connection": "2.4 GHz USB",
+        "layout": "US / UK / DE options"
+      },
+      "description": "Fictional contract supply of wireless keyboard and mouse kit for workplace projects. Volume tiers and stock are demo data. All unit prices exclude VAT and delivery.",
+      "url": "https://example.invalid/products/keyboard-wireless"
+    },
+    {
+      "id": "storage-locker",
+      "sku": "LN-STO-001",
+      "name": "Four-door Storage Locker",
+      "category": "storage",
+      "unitPrice": 259,
+      "stock": 480,
+      "minimumOrderQuantity": 20,
+      "leadTimeDays": 21,
+      "warrantyMonths": 36,
+      "priceBreaks": [
+        {
+          "minQuantity": 100,
+          "unitPrice": 229
+        },
+        {
+          "minQuantity": 250,
+          "unitPrice": 209
+        }
+      ],
+      "specifications": {
+        "dimensions": "180 × 90 × 45 cm",
+        "material": "Powder-coated steel"
+      },
+      "description": "Fictional contract supply of four-door storage locker for workplace projects. Volume tiers and stock are demo data. All unit prices exclude VAT and delivery.",
+      "url": "https://example.invalid/products/storage-locker"
+    },
+    {
+      "id": "meeting-table",
+      "sku": "LN-TBL-001",
+      "name": "Eight-person Meeting Table",
+      "category": "tables",
+      "unitPrice": 499,
+      "stock": 150,
+      "minimumOrderQuantity": 5,
+      "leadTimeDays": 28,
+      "warrantyMonths": 36,
+      "priceBreaks": [
+        {
+          "minQuantity": 25,
+          "unitPrice": 459
+        },
+        {
+          "minQuantity": 100,
+          "unitPrice": 419
+        }
+      ],
+      "specifications": {
+        "dimensions": "240 × 100 cm",
+        "capacity": "8 people"
+      },
+      "description": "Fictional contract supply of eight-person meeting table for workplace projects. Volume tiers and stock are demo data. All unit prices exclude VAT and delivery.",
+      "url": "https://example.invalid/products/meeting-table"
+    },
+    {
+      "id": "industrial-rack",
+      "sku": "LN-RCK-001",
+      "name": "Heavy-duty Warehouse Rack",
+      "category": "warehouse",
+      "unitPrice": 389,
+      "stock": 650,
+      "minimumOrderQuantity": 10,
+      "leadTimeDays": 18,
+      "warrantyMonths": 48,
+      "priceBreaks": [
+        {
+          "minQuantity": 50,
+          "unitPrice": 359
+        },
+        {
+          "minQuantity": 200,
+          "unitPrice": 329
+        }
+      ],
+      "specifications": {
+        "dimensions": "200 × 180 × 60 cm",
+        "capacity": "500 kg per shelf",
+        "shelves": "4"
+      },
+      "description": "Fictional contract supply of heavy-duty warehouse rack for workplace projects. Volume tiers and stock are demo data. All unit prices exclude VAT and delivery.",
+      "url": "https://example.invalid/products/industrial-rack"
+    },
+    {
+      "id": "safety-gloves",
+      "sku": "LN-PPE-001",
+      "name": "Work Safety Gloves Pack",
+      "category": "safety equipment",
+      "unitPrice": 12,
+      "stock": 12000,
+      "minimumOrderQuantity": 500,
+      "leadTimeDays": 5,
+      "warrantyMonths": 12,
+      "priceBreaks": [
+        {
+          "minQuantity": 1000,
+          "unitPrice": 10
+        },
+        {
+          "minQuantity": 5000,
+          "unitPrice": 8
+        }
+      ],
+      "specifications": {
+        "unit": "Pack of 10 pairs",
+        "sizes": "S–XL",
+        "material": "Nitrile-coated fabric"
+      },
+      "description": "Fictional contract supply of work safety gloves pack for workplace projects. Volume tiers and stock are demo data. All unit prices exclude VAT and delivery.",
+      "url": "https://example.invalid/products/safety-gloves"
+    }
+  ]
+}
