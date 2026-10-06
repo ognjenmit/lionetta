@@ -1,3 +1,5 @@
+export const LIONETTA_LOGO_SRC = "/brand/lionetta-lioness-logo.png";
+
 type IconName = "arrow" | "spark" | "inventory" | "pricing" | "crm" | "shield" | "layers" | "car";
 
 const paths: Record<IconName, string> = {
@@ -16,7 +18,7 @@ export function Icon({ name, className = "" }: { name: IconName; className?: str
 }
 
 export function LionMark({ className = "" }: { className?: string }) {
-  return <img className={`lion-mark ${className}`} src="/brand/lionetta-lion.png" width="64" height="64" alt="" />;
+  return <img className={`lion-mark ${className}`} src={LIONETTA_LOGO_SRC} width="64" height="64" alt="" />;
 }
 
 export function Brand({ compact = false }: { compact?: boolean }) {

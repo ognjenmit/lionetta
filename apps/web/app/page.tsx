@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type CSSProperties, type FormEvent, type KeyboardEvent } from "react";
 import Image from "next/image";
 import type { ChatResponse, Mode, PendingConfirmation, Tenant, TenantsResponse, ToolCall, Vehicle } from "../lib/contracts";
-import { Brand, Icon, LionMark } from "./brand";
+import { Brand, Icon, LionMark, LIONETTA_LOGO_SRC } from "./brand";
 
 interface Message {
   id: string;
@@ -209,7 +209,7 @@ export default function Home() {
           </div>
           <div className="hero-art">
             <div className="hero-orbit orbit-one" /><div className="hero-orbit orbit-two" />
-            <img className="hero-lion" src="/brand/lionetta-lion.png" alt="A silver cybernetic lion with emerald eyes and a flowing green and violet mane" width="720" height="720" fetchPriority="high" />
+            <Image className="hero-lioness" src={LIONETTA_LOGO_SRC} alt="Lionetta’s green and purple lioness logo, with soft feminine facial contours" width={720} height={720} sizes="(max-width: 700px) 100vw, 50vw" fetchPriority="high" />
             <div className="art-caption">Your business.<br /><strong>Amplified by<br />intelligence.</strong></div>
             <div className="art-tag"><Icon name="spark" /><span>From complexity<br /><strong>to conversation.</strong></span></div>
           </div>

@@ -4,7 +4,7 @@ One conversation, every system.
 
 A local car-advisor MVP built with **TypeScript, npm, Next.js, and real MCP connections**. It includes configurable demo dealerships, vehicle cards, inventory/pricing/CRM MCP services, and a separate Terraform scaffold for future AWS Bedrock AgentCore deployment.
 
-The demo pairs Lionetta's dark green-and-violet lion identity with a light Rivermore client website and embedded assistant. Generated lion artwork and illustrative vehicle images are served locally from `apps/web/public`; vehicle specifications and prices still come from the MCP fixture data.
+The demo pairs Lionetta's dark green-and-purple lioness identity with a light Rivermore client website and embedded assistant. The simple lioness logo has subtle feminine facial contours and is used consistently in the header, hero, integration diagram, assistant, footer, and browser icons. The transparent logo lives at `apps/web/public/brand/lionetta-lioness-logo.png`; illustrative vehicle images are also served locally from `apps/web/public`. Vehicle specifications and prices still come from the MCP fixture data.
 
 ## Start locally
 
