@@ -4,6 +4,8 @@ One conversation, every system.
 
 A local car-advisor MVP built with **TypeScript, npm, Next.js, and real MCP connections**. It includes configurable demo dealerships, vehicle cards, inventory/pricing/CRM MCP services, and a separate Terraform scaffold for future AWS Bedrock AgentCore deployment.
 
+The demo pairs Lionetta's dark green-and-violet lion identity with a light Rivermore client website and embedded assistant. Generated lion artwork and illustrative vehicle images are served locally from `apps/web/public`; vehicle specifications and prices still come from the MCP fixture data.
+
 ## Start locally
 
 Use Node **24.19.0** and npm **11.9.0**. If you use nvm, run `nvm install && nvm use` first.
@@ -21,7 +23,7 @@ Try the sample request:
 
 > I want a BMW 3 Series under €25,000, automatic and below 50,000 km.
 
-For Delta Motors, this discovers `inventory.search_vehicles`, searches fixture data, retrieves prices through `pricing.get_price`, and displays three matching BMWs. Switch to Northside Motors to use a different inventory and tool policy.
+For Rivermore, this discovers `inventory.search_vehicles`, searches fixture data, retrieves prices through `pricing.get_price`, and displays three matching BMWs. Switch to Northside Motors to use a different inventory and tool policy. Rivermore retains the `delta-motors` demo identifier in configuration and fixtures.
 
 Try `integrations`, `list leads`, and `create lead: Alex | alex@example.com | bmw-320d-001`. Creating a lead shows the exact proposed action and requires an explicit confirmation. Confirmation tokens belong to one tenant and conversation, expire after ten minutes, and can be used once. Northside's CRM writes are disabled.
 

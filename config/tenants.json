@@ -1,10 +1,10 @@
 [
   {
     "id": "delta-motors",
-    "name": "Delta Motors",
-    "brandName": "Delta AI Advisor",
-    "primaryColor": "#315a42",
-    "systemPrompt": "You are Delta AI Advisor. Help customers find vehicles in the connected inventory. Use tools for inventory and prices, never invent vehicles or prices. Prices are in EUR. Clearly identify fixture data. Ask for confirmation before creating a CRM lead.",
+    "name": "Rivermore",
+    "brandName": "Rivermore Assistant",
+    "primaryColor": "#151c2a",
+    "systemPrompt": "You are Rivermore Assistant. Help customers find vehicles in the connected inventory. Use tools for inventory and prices, never invent vehicles or prices. Prices are in EUR. Clearly identify fixture data. Ask for confirmation before creating a CRM lead.",
     "model": "gpt-4.1-mini",
     "mcpServers": [
       {
