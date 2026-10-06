@@ -1,0 +1,127 @@
+{
+  "delta-motors": [
+    {
+      "id": "bmw-320d-001",
+      "brand": "BMW",
+      "model": "3 Series 320d",
+      "price": 23900,
+      "mileage": 32000,
+      "transmission": "automatic",
+      "fuel": "diesel",
+      "year": 2020,
+      "url": "https://example.invalid/vehicles/bmw-320d-001"
+    },
+    {
+      "id": "bmw-318i-002",
+      "brand": "BMW",
+      "model": "3 Series 318i",
+      "price": 22400,
+      "mileage": 42000,
+      "transmission": "automatic",
+      "fuel": "petrol",
+      "year": 2019,
+      "url": "https://example.invalid/vehicles/bmw-318i-002"
+    },
+    {
+      "id": "bmw-320i-003",
+      "brand": "BMW",
+      "model": "3 Series 320i",
+      "price": 24900,
+      "mileage": 28000,
+      "transmission": "automatic",
+      "fuel": "petrol",
+      "year": 2020,
+      "url": "https://example.invalid/vehicles/bmw-320i-003"
+    },
+    {
+      "id": "delta-bmw-330i",
+      "brand": "BMW",
+      "model": "3 Series 330i",
+      "price": 29900,
+      "mileage": 18000,
+      "transmission": "automatic",
+      "fuel": "petrol",
+      "year": 2021,
+      "url": "https://example.invalid/vehicles/delta-bmw-330i"
+    },
+    {
+      "id": "delta-bmw-320d-high-mileage",
+      "brand": "BMW",
+      "model": "3 Series 320d",
+      "price": 22900,
+      "mileage": 58000,
+      "transmission": "automatic",
+      "fuel": "diesel",
+      "year": 2019,
+      "url": "https://example.invalid/vehicles/delta-bmw-320d-high-mileage"
+    },
+    {
+      "id": "delta-bmw-318d-manual",
+      "brand": "BMW",
+      "model": "3 Series 318d",
+      "price": 20900,
+      "mileage": 45000,
+      "transmission": "manual",
+      "fuel": "diesel",
+      "year": 2019,
+      "url": "https://example.invalid/vehicles/delta-bmw-318d-manual"
+    },
+    {
+      "id": "delta-audi-a4",
+      "brand": "Audi",
+      "model": "A4 35 TFSI",
+      "price": 22900,
+      "mileage": 33000,
+      "transmission": "automatic",
+      "fuel": "petrol",
+      "year": 2020,
+      "url": "https://example.invalid/vehicles/delta-audi-a4"
+    },
+    {
+      "id": "delta-vw-golf",
+      "brand": "Volkswagen",
+      "model": "Golf 1.5 TSI",
+      "price": 17900,
+      "mileage": 49000,
+      "transmission": "automatic",
+      "fuel": "petrol",
+      "year": 2019,
+      "url": "https://example.invalid/vehicles/delta-vw-golf"
+    }
+  ],
+  "northside-motors": [
+    {
+      "id": "northside-bmw-320i",
+      "brand": "BMW",
+      "model": "3 Series 320i",
+      "price": 21900,
+      "mileage": 46000,
+      "transmission": "automatic",
+      "fuel": "petrol",
+      "year": 2019,
+      "url": "https://example.invalid/vehicles/northside-bmw-320i"
+    },
+    {
+      "id": "northside-toyota-corolla",
+      "brand": "Toyota",
+      "model": "Corolla Hybrid",
+      "price": 19900,
+      "mileage": 24000,
+      "transmission": "automatic",
+      "fuel": "hybrid",
+      "year": 2021,
+      "url": "https://example.invalid/vehicles/northside-toyota-corolla"
+    },
+    {
+      "id": "northside-tesla-model-3",
+      "brand": "Tesla",
+      "model": "Model 3",
+      "price": 27900,
+      "mileage": 35000,
+      "transmission": "automatic",
+      "fuel": "electric",
+      "year": 2021,
+      "url": "https://example.invalid/vehicles/northside-tesla-model-3"
+    }
+  ]
+}

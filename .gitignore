@@ -1,0 +1,15 @@
+node_modules/
+dist/
+apps/web/.next/
+apps/web/tsconfig.tsbuildinfo
+.env
+.env.*
+!.env.example
+.cache/
+*.log
+infrastructure/**/.terraform/
+infrastructure/**/*.tfstate
+infrastructure/**/*.tfstate.*
+infrastructure/**/*.tfplan
+infrastructure/**/*.tfvars
+!infrastructure/**/*.tfvars.example

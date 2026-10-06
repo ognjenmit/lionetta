@@ -1,0 +1,130 @@
+[
+  {
+    "id": "delta-motors",
+    "name": "Delta Motors",
+    "brandName": "Delta AI Advisor",
+    "primaryColor": "#315a42",
+    "systemPrompt": "You are Delta AI Advisor. Help customers find vehicles in the connected inventory. Use tools for inventory and prices, never invent vehicles or prices. Prices are in EUR. Clearly identify fixture data. Ask for confirmation before creating a CRM lead.",
+    "model": "gpt-4.1-mini",
+    "mcpServers": [
+      {
+        "id": "inventory",
+        "name": "Vehicle inventory",
+        "url": "http://127.0.0.1:8001/mcp",
+        "enabled": true,
+        "tools": [
+          {
+            "name": "search_vehicles",
+            "enabled": true,
+            "requiresConfirmation": false
+          },
+          {
+            "name": "get_vehicle",
+            "enabled": true,
+            "requiresConfirmation": false
+          }
+        ]
+      },
+      {
+        "id": "pricing",
+        "name": "Pricing and leasing",
+        "url": "http://127.0.0.1:8002/mcp",
+        "enabled": true,
+        "tools": [
+          {
+            "name": "get_price",
+            "enabled": true,
+            "requiresConfirmation": false
+          },
+          {
+            "name": "quote_lease",
+            "enabled": true,
+            "requiresConfirmation": false
+          }
+        ]
+      },
+      {
+        "id": "crm",
+        "name": "Demo CRM",
+        "url": "http://127.0.0.1:8003/mcp",
+        "enabled": true,
+        "tools": [
+          {
+            "name": "create_lead",
+            "enabled": true,
+            "requiresConfirmation": true
+          },
+          {
+            "name": "list_leads",
+            "enabled": true,
+            "requiresConfirmation": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "northside-motors",
+    "name": "Northside Motors",
+    "brandName": "Northside Assistant",
+    "primaryColor": "#425d86",
+    "systemPrompt": "You are Northside Assistant. Search only the connected tenant inventory and use verified tool data for prices. This is fixture data. CRM writes are disabled for this tenant.",
+    "model": "gpt-4.1-mini",
+    "mcpServers": [
+      {
+        "id": "inventory",
+        "name": "Vehicle inventory",
+        "url": "http://127.0.0.1:8001/mcp",
+        "enabled": true,
+        "tools": [
+          {
+            "name": "search_vehicles",
+            "enabled": true,
+            "requiresConfirmation": false
+          },
+          {
+            "name": "get_vehicle",
+            "enabled": true,
+            "requiresConfirmation": false
+          }
+        ]
+      },
+      {
+        "id": "pricing",
+        "name": "Pricing and leasing",
+        "url": "http://127.0.0.1:8002/mcp",
+        "enabled": true,
+        "tools": [
+          {
+            "name": "get_price",
+            "enabled": true,
+            "requiresConfirmation": false
+          },
+          {
+            "name": "quote_lease",
+            "enabled": false,
+            "requiresConfirmation": false
+          }
+        ]
+      },
+      {
+        "id": "crm",
+        "name": "Demo CRM",
+        "url": "http://127.0.0.1:8003/mcp",
+        "enabled": true,
+        "tools": [
+          {
+            "name": "create_lead",
+            "enabled": false,
+            "requiresConfirmation": true
+          },
+          {
+            "name": "list_leads",
+            "enabled": true,
+            "requiresConfirmation": false
+          }
+        ]
+      }
+    ]
+  }
+]

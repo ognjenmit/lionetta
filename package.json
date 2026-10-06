@@ -1,0 +1,33 @@
+{
+  "name": "lionetta",
+  "version": "0.1.0",
+  "private": true,
+  "description": "One conversation, every system. Local multi-tenant MCP car-search MVP.",
+  "type": "module",
+  "engines": { "node": ">=24 <25", "npm": ">=11 <12" },
+  "packageManager": "npm@11.9.0",
+  "workspaces": ["apps/web"],
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env scripts/services.mjs --dev",
+    "build:backend": "tsc -p tsconfig.json",
+    "build": "npm run build:backend && npm run build --workspace @lionetta/web",
+    "start": "node --env-file-if-exists=.env scripts/services.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit && npm run typecheck --workspace @lionetta/web",
+    "test": "tsx --test test/*.test.ts packages/agent/test/*.test.ts packages/mcp-client/test/*.test.ts",
+    "smoke": "node scripts/smoke.mjs",
+    "check:running": "node --env-file-if-exists=.env scripts/check-running.mjs",
+    "verify": "npm run typecheck && npm test && npm run build && npm run smoke",
+    "tf:local": "terraform -chdir=infrastructure/local",
+    "tf:aws": "terraform -chdir=infrastructure/aws"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "openai": "7.28.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.1",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2"
+  }
+}
