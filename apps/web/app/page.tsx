@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type CSSProperties, type FormEvent, type KeyboardEvent } from "react";
 import Image from "next/image";
 import type { ChatResponse, Mode, PendingConfirmation, Tenant, TenantsResponse, ToolCall, Vehicle, Property, Product } from "../lib/contracts";
-import { Brand, Icon, LionMark, LIONETTA_HERO_SRC } from "./brand";
+import { Brand, Icon, LionMark, AssistantPortrait, LIONETTA_HERO_SRC } from "./brand";
 import { demoExperiences } from "./demo-examples";
 import { PropertyCard, ProductCard, QuoteCards } from "./catalog-cards";
 
@@ -218,7 +218,7 @@ export default function Home() {
           </div>
           <div className="hero-art">
             <div className="hero-orbit orbit-one" /><div className="hero-orbit orbit-two" />
-            <Image className="hero-lioness" src={LIONETTA_HERO_SRC} alt="Lionetta’s green and purple lioness portrait, with soft feminine facial contours" width={720} height={720} sizes="(max-width: 700px) 100vw, 50vw" loading="eager" fetchPriority="high" />
+            <Image className="hero-lioness" src={LIONETTA_HERO_SRC} alt="Lionetta’s angular neon-lime and purple lioness avatar" width={720} height={720} sizes="(max-width: 700px) 100vw, 50vw" loading="eager" fetchPriority="high" />
             <div className="art-caption">Your business.<br /><strong>Amplified by<br />intelligence.</strong></div>
             <div className="art-tag"><Icon name="spark" /><span>From complexity<br /><strong>to conversation.</strong></span></div>
           </div>
@@ -256,7 +256,7 @@ export default function Home() {
                 <header className="assistant-header"><div className="assistant-brand-icon"><Icon name={experience.icon} /></div><div><strong>{tenant?.brandName || "Your assistant"}</strong><span>Your {tenant?.domain === "b2b" ? "business" : tenant?.domain === "real-estate" ? "property" : "car"} advisor</span></div><span className="assistant-online" aria-label={loadingTenants ? "Connecting" : connectionError ? "Unavailable" : "Local runtime available"} data-connected={!loadingTenants && !connectionError} /></header>
                 <section ref={chatLog} className="conversation" aria-label="Conversation" role="log" aria-live="polite" aria-relevant="additions text">
                   {messages.map((message) => <article key={message.id} className={`message ${message.role}${message.error ? " error" : ""}${message.pending ? " pending" : ""}`}>
-                    <div className="avatar" aria-hidden="true">{message.role === "user" ? "You" : <LionMark />}</div>
+                    <div className="avatar" aria-hidden="true">{message.role === "user" ? "You" : <AssistantPortrait />}</div>
                     <div className="message-content"><div className="message-name">{message.role === "user" ? "You" : tenant?.brandName || "Lionetta"}</div><p className="message-text" role={message.error ? "alert" : undefined}>{message.text}</p>
                       {!!message.vehicles?.length && <div className="vehicles">{message.vehicles.map((vehicle) => <VehicleCard vehicle={vehicle} key={vehicle.id} />)}</div>}
                       {!!message.properties?.length && <div className="vehicles">{message.properties.map(property => <PropertyCard property={property} key={property.id} />)}</div>}

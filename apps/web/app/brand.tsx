@@ -1,5 +1,6 @@
-export const LIONETTA_LOGO_SRC = "/brand/lionetta-eye-logo-soft.png";
-export const LIONETTA_HERO_SRC = "/brand/lionetta-lioness-logo.png";
+export const LIONETTA_LOGO_SRC = "/brand/lionetta-logo.png";
+export const LIONETTA_HERO_SRC = "/brand/lionetta-hero-avatar.png";
+export const LIONETTA_ASSISTANT_SRC = "/brand/lionetta-happy-talking.gif";
 
 type IconName = "arrow" | "spark" | "inventory" | "pricing" | "crm" | "shield" | "layers" | "car" | "home";
 
@@ -21,6 +22,13 @@ export function Icon({ name, className = "" }: { name: IconName; className?: str
 
 export function LionMark({ className = "" }: { className?: string }) {
   return <img className={`lion-mark ${className}`} src={LIONETTA_LOGO_SRC} width="64" height="64" alt="" />;
+}
+
+export function AssistantPortrait() {
+  return <picture className="assistant-portrait-frame">
+    <source media="(prefers-reduced-motion: reduce)" srcSet={LIONETTA_HERO_SRC} />
+    <img className="assistant-portrait" src={LIONETTA_ASSISTANT_SRC} width="64" height="64" alt="" />
+  </picture>;
 }
 
 export function Brand({ compact = false }: { compact?: boolean }) {
