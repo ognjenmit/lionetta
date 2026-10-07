@@ -53,10 +53,6 @@ button { transition: background .18s, border-color .18s, transform .18s; }
 .hero-art { position: relative; height: 510px; min-width: 0; }
 .hero-art::before { content: ""; position: absolute; inset: -40px -20px -20px; background: radial-gradient(ellipse at 48% 52%, #65429830, transparent 60%), radial-gradient(ellipse at 65% 70%, #156a3620, transparent 50%); }
 .hero-lioness { position: absolute; width: 94%; height: 470px; top: 0; right: 14px; object-fit: contain; filter: drop-shadow(0 12px 36px #663b982b); z-index: 1; }
-.hero-avatar-still, .hero-avatar-animation { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
-.hero-avatar-animation { visibility: hidden; }
-.hero-lioness[data-ready="true"] .hero-avatar-still { visibility: hidden; }
-.hero-lioness[data-ready="true"] .hero-avatar-animation { visibility: visible; }
 .hero-orbit { position: absolute; width: 390px; height: 390px; top: 85px; left: 24px; border: 1px solid #aa54ff25; border-radius: 50%; transform: rotate(-23deg) scaleY(.72); }
 .orbit-two { width: 450px; height: 450px; top: 30px; left: 0; border-color: #50fb6520; transform: rotate(36deg) scaleY(.65); }
 .art-caption { position: absolute; right: 0; top: 270px; font-size: 8px; letter-spacing: 2px; color: var(--green); text-transform: uppercase; line-height: 2; z-index: 2; padding: 8px 0 8px 12px; border-left: 1px solid #6dffbd60; text-shadow: 0 2px 8px #07090f; }
