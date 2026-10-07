@@ -10,7 +10,7 @@ export async function GET() {
       signal: AbortSignal.timeout(10000),
     });
     return await forwardJson(response);
-  } catch {
-    return unavailable();
+  } catch (error) {
+    return unavailable(error);
   }
 }

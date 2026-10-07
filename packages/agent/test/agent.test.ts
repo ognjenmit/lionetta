@@ -104,7 +104,7 @@ async function fakeModel(replies: unknown[], status = 200): Promise<{ server: Se
       response.end(JSON.stringify(status === 200
         ? { id: "test-completion", object: "chat.completion", created: 0, model: "test-model",
           choices: [{ index: 0, finish_reason: "stop", message: replies[requests.length - 1] }] }
-        : { error: { message: replies[0], type: "invalid_api_key" } }));
+        : { error: typeof replies[0] === "object" && replies[0] !== null ? replies[0] : { message: replies[0], type: "invalid_api_key" } }));
     })().catch(() => { response.writeHead(500); response.end(); });
   });
   await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve));
@@ -169,6 +169,24 @@ test("model provider errors report status without exposing provider error text",
     assert.doesNotMatch(result.reply, /sk-provider-echo/);
   } finally { await agent.close(); await closeServer(provider.server); }
 });
+
+for (const scenario of [
+  { name: "quota code", code: "insufficient_quota", type: "insufficient_quota", expected: /insufficient_quota.*API credits/ },
+  { name: "quota type without code", code: undefined, type: "insufficient_quota", expected: /insufficient_quota.*API credits/ },
+  { name: "billing limit", code: "billing_hard_limit_reached", type: "billing_error", expected: /billing_hard_limit_reached.*spending limits/ },
+  { name: "rate limit", code: "rate_limit_exceeded", type: "tokens", expected: /rate_limit_exceeded.*Wait briefly/ },
+  { name: "unknown code", code: "sk-hidden-code", type: "sk-hidden-type", expected: /HTTP 429.*credits.*rate limits/ },
+]) {
+  test(`OpenAI 429 ${scenario.name} gives safe and actionable guidance`, async () => {
+    const provider = await fakeModel([{ code: scenario.code, type: scenario.type, message: "Private provider text sk-provider-echo" }], 429);
+    const agent = new LionettaAgent([tenant()], { mode: "openai", apiKey: "local-test-key", baseURL: provider.url });
+    try {
+      const result = await agent.invoke({ tenantId: "delta-motors", sessionId: "a", prompt: "Show one BMW" });
+      assert.match(result.reply, scenario.expected);
+      assert.doesNotMatch(result.reply, /sk-provider-echo|sk-hidden-code|sk-hidden-type|Private provider text/);
+    } finally { await agent.close(); await closeServer(provider.server); }
+  });
+}
 
 test("the model tool loop stops after eight rounds", async () => {
   mock.method(McpRouter.prototype, "discover", async () => [tool("inventory.search_vehicles")]);

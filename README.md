@@ -78,6 +78,22 @@ For the compiled stack, run `npm run build && npm start`. The app intentionally 
 
 With either the npm or Compose stack already running, `npm run check:running` checks every service and the car, real estate, and B2B examples through the UI proxy.
 
+### Troubleshoot an unavailable API
+
+If `/api/tenants` returns 503, Next.js cannot reach the Lionetta API; this happens before a model request. The web terminal logs a transport code such as `ECONNREFUSED`. Check the earlier `[api]` startup/error lines. Keep each `.env` setting on its own line and place the file beside the root `package.json`.
+
+After pulling dependency changes, run `npm ci` from the repository root before restarting. An `ERR_MODULE_NOT_FOUND` error for `@anthropic-ai/sdk` means the local dependency installation is incomplete or outdated. The shared agent imports both provider SDKs at startup, including when OpenAI mode is selected.
+
+To expose an API startup failure directly, stop `npm run dev` with Ctrl+C, then run this from the repository root:
+
+```sh
+node --env-file=.env --import tsx apps/api/src/server.ts
+```
+
+The API should announce its configured mode and listening address. With the default ports, `http://127.0.0.1:8080/ping` should return a healthy status. After diagnosing the error, stop the direct API process and use `npm run dev` again to start all five services. Use the pinned Node 24 runtime. If the API is healthy but the web proxy fails, check `API_ORIGIN`; for local development with default ports it is `http://127.0.0.1:8080`.
+
+If a chat reaches OpenAI but returns HTTP 429, the assistant distinguishes known provider codes: `insufficient_quota` means API credits/quota or spending limits need attention; `billing_hard_limit_reached` points to a billing/spending limit; `rate_limit_exceeded` means wait and retry or review API rate limits. Check your API project's [billing](https://platform.openai.com/settings/organization/billing/overview) and [limits](https://platform.openai.com/settings/organization/limits). ChatGPT subscriptions and API billing are separate. Unknown 429 responses show general guidance; raw provider error text and unknown codes are not exposed.
+
 ## Layout and configuration
 
 | Path | Purpose |

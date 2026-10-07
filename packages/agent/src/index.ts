@@ -100,8 +100,7 @@ export class LionettaAgent {
     } catch (error) {
       if (error instanceof McpToolError) response.toolCalls.push(error.trace);
       const detail = error instanceof APIError || error instanceof AnthropicAPIError
-        ? error.status === undefined ? "The model provider could not be reached. Check its configuration and connectivity."
-          : `The model provider returned HTTP ${error.status}. Check its configuration and access.`
+        ? providerErrorDetail(error)
         : error instanceof Error ? error.message : "Unknown error";
       response.reply = `Lionetta could not complete this request: ${detail}`;
     }
@@ -378,6 +377,24 @@ export class LionettaAgent {
       else break;
     }
   }
+}
+
+function providerErrorDetail(error: APIError | AnthropicAPIError): string {
+  // Map known structured codes to advice; never echo provider messages or unknown codes.
+  if (error instanceof APIError && error.status === 429) {
+    if (error.code === "insufficient_quota" || error.type === "insufficient_quota") {
+      return "OpenAI returned HTTP 429 (insufficient_quota). Add API credits or check API billing and project/organization spending limits, then retry.";
+    }
+    if (error.code === "billing_hard_limit_reached") {
+      return "OpenAI returned HTTP 429 (billing_hard_limit_reached). Check API billing and project/organization spending limits, then retry.";
+    }
+    if (error.code === "rate_limit_exceeded" || error.type === "rate_limit_exceeded") {
+      return "OpenAI returned HTTP 429 (rate_limit_exceeded). Wait briefly and retry, or check your project's API rate limits.";
+    }
+  }
+  if (error.status === 429) return "The model provider returned HTTP 429. Check API credits, quota/spending limits, and rate limits.";
+  return error.status === undefined ? "The model provider could not be reached. Check its configuration and connectivity."
+    : `The model provider returned HTTP ${error.status}. Check its configuration and access.`;
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {
