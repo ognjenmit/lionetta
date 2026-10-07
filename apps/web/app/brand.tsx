@@ -32,5 +32,5 @@ export function AssistantPortrait({ talking = false }: { talking?: boolean }) {
 }
 
 export function Brand({ compact = false }: { compact?: boolean }) {
-  return <span className={`brand${compact ? " brand-compact" : ""}`}><LionMark /><span className="brand-type"><strong>Lionetta</strong>{!compact && <small>Intelligence connects everything</small>}</span></span>;
+  return <span className={`brand${compact ? " brand-compact" : ""}`}><LionMark /><span className="brand-type"><strong>Lionetta</strong>{!compact && <small>from complexity to conversations</small>}</span></span>;
 }

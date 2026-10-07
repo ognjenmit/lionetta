@@ -212,8 +212,8 @@ export default function Home() {
           <div className="hero-copy">
             <p className="eyebrow"><span className="eyebrow-line" /> AI assistants for real business</p>
             <h1 id="hero-title">One conversation.<br /><span>Every system.</span></h1>
-            <p className="hero-description">Connect your data, tools, and workflows into one intelligent customer experience.</p>
-            <div className="hero-actions"><a className="button button-green" href="#demo">Explore the live demo <Icon name="arrow" /></a><a className="button button-outline" href="#integrations"><span className="play-icon" aria-hidden="true">▷</span> See how it works</a></div>
+            <p className="hero-description">Connect your data, tools, and workflows into one intelligent experience.</p>
+            <div className="hero-actions"><a className="button button-green" href="#demo">Explore the live demo <Icon name="arrow" /></a><a className="button button-outline" href="#integrations"><span className="play-icon" aria-hidden="true">▷</span> Behind the scenes</a></div>
             <p className="hero-footnote"><span /> Your data. Your tools. A more human experience.</p>
           </div>
           <div className="hero-art">
@@ -225,7 +225,7 @@ export default function Home() {
         </section>
 
         <section className="connection-section container" id="integrations" aria-labelledby="connection-title">
-          <div className="connection-heading"><p className="eyebrow" id="connection-title">Everything you need. Working together.</p><span>Three real MCP demo integrations</span></div>
+          <div className="connection-heading"><p className="eyebrow" id="connection-title">Everything you need. Working together.</p></div>
           <div className="connection-map">
             <div className="source-nodes"><div className="connection-node"><Icon name="inventory" /><span>Inventory</span></div><div className="connection-node"><Icon name="pricing" /><span>Pricing</span></div><div className="connection-node"><Icon name="crm" /><span>CRM</span></div></div>
             <div className="connection-wire"><span /><span /><span /></div>
