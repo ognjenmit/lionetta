@@ -1,4 +1,4 @@
-export const LIONETTA_LOGO_SRC = "/brand/lionetta-eye-logo-cheerful.png";
+export const LIONETTA_LOGO_SRC = "/brand/lionetta-eye-logo-soft.png";
 export const LIONETTA_HERO_SRC = "/brand/lionetta-lioness-logo.png";
 
 type IconName = "arrow" | "spark" | "inventory" | "pricing" | "crm" | "shield" | "layers" | "car" | "home";
