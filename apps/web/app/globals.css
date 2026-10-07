@@ -34,8 +34,8 @@ button { transition: background .18s, border-color .18s, transform .18s; }
 .site-header nav a:hover { color: var(--green); }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 17px; min-height: 49px; padding: 14px 21px; border-radius: 9px; font-size: 12px; font-weight: 650; white-space: nowrap; }
 .button svg { width: 18px; height: 18px; }
-.button-green { color: #07160b; background: linear-gradient(135deg, #8bff74, #61ef87); border: 1px solid #abff9660; box-shadow: 0 0 26px #4dfb6825, inset 0 1px 0 #ffffff70; }
-.button-green:hover { background: #a0ff8b; box-shadow: 0 0 34px #4dfb6840; }
+.button-green { color: #101410; background: var(--green); border: 1px solid color-mix(in srgb, var(--green) 60%, white); box-shadow: 0 0 26px color-mix(in srgb, var(--green) 15%, transparent), inset 0 1px 0 #ffffff70; }
+.button-green:hover { background: color-mix(in srgb, var(--green) 85%, white); box-shadow: 0 0 34px color-mix(in srgb, var(--green) 25%, transparent); }
 .button-outline { color: #e5deed; border: 1px solid #ba8feb70; background: #12101c85; box-shadow: inset 0 0 20px #9246ef0a; }
 .button-outline:hover { border-color: #bc82ff; background: #231433; }
 .play-icon { font-size: 20px; width: 22px; height: 22px; border: 1px solid #c4b4d5; border-radius: 50%; display: grid; place-items: center; line-height: 1; padding-left: 2px; }
@@ -101,7 +101,7 @@ button { transition: background .18s, border-color .18s, transform .18s; }
 .dealer-switch select { color: #eee9f7; background: #14131e; border: 1px solid #81709845; border-radius: 8px; padding: 10px 12px; font-size: 11px; max-width: 100%; }
 .demo-scenarios { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 30px; }
 .scenario-card { display: flex; flex-direction: column; border: 1px solid #8668aa40; border-radius: 12px; padding: 23px; background: #10121c; min-width: 0; }
-.scenario-card[data-active="true"] { border-color: #79ff796b; background: linear-gradient(140deg, #14281e70, #151024); box-shadow: 0 0 22px #5aff680b; }
+.scenario-card[data-active="true"] { border-color: color-mix(in srgb, var(--green) 42%, transparent); background: linear-gradient(140deg, color-mix(in srgb, var(--green) 8%, #10121c), #151024); box-shadow: 0 0 22px color-mix(in srgb, var(--green) 4%, transparent); }
 .scenario-title { display: flex; align-items: center; gap: 10px; color: #c4a4ef; }
 .scenario-title svg { color: var(--green); width: 21px; flex-shrink: 0; }
 .scenario-title h3 { font-size: 17px; font-weight: 550; margin: 0; }
@@ -109,7 +109,7 @@ button { transition: background .18s, border-color .18s, transform .18s; }
 .scenario-card blockquote { margin: 5px 0 16px; border-left: 2px solid #9160cb; padding-left: 13px; color: #e1d8ed; font-size: 12px; line-height: 1.8; }
 .scenario-card ol { margin: auto 0 18px; padding-left: 19px; color: #9992ac; font-size: 11px; line-height: 2; }
 .scenario-card button { display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid #906ac357; border-radius: 7px; background: #1c172b; color: #dbcaef; padding: 11px; font-size: 11px; text-align: left; }
-.scenario-card button[aria-pressed="true"] { color: var(--green); border-color: #79ff794f; }
+.scenario-card button[aria-pressed="true"] { color: var(--green); border-color: color-mix(in srgb, var(--green) 31%, transparent); background: color-mix(in srgb, var(--green) 8%, #1c172b); }
 .scenario-card button svg { width: 15px; height: 15px; }
 .client-frame { border-radius: 16px; overflow: hidden; border: 1px solid #8b87a94a; box-shadow: 0 30px 100px #0007, -6px 0 44px #674aff0c, 6px 0 44px #60ff6f09; background: #fbfcfe; color: #182131; color-scheme: light; }
 .frame-bar { height: 36px; background: #edf0f6; border-bottom: 1px solid #e1e5ed; display: flex; align-items: center; gap: 13px; padding: 0 17px; font-size: 9px; color: #7f8592; }
