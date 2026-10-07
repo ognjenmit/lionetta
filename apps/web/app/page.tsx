@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type CSSProperties, type FormEvent, type KeyboardEvent } from "react";
 import Image from "next/image";
 import type { ChatResponse, Mode, PendingConfirmation, Tenant, TenantsResponse, ToolCall, Vehicle, Property, Product } from "../lib/contracts";
-import { Brand, Icon, LionMark, LIONETTA_LOGO_SRC } from "./brand";
+import { Brand, Icon, LionMark, LIONETTA_HERO_SRC } from "./brand";
 import { demoExperiences } from "./demo-examples";
 import { PropertyCard, ProductCard, QuoteCards } from "./catalog-cards";
 
@@ -218,7 +218,7 @@ export default function Home() {
           </div>
           <div className="hero-art">
             <div className="hero-orbit orbit-one" /><div className="hero-orbit orbit-two" />
-            <Image className="hero-lioness" src={LIONETTA_LOGO_SRC} alt="Lionetta’s green and purple lioness logo, with soft feminine facial contours" width={720} height={720} sizes="(max-width: 700px) 100vw, 50vw" fetchPriority="high" />
+            <Image className="hero-lioness" src={LIONETTA_HERO_SRC} alt="Lionetta’s green and purple lioness portrait, with soft feminine facial contours" width={720} height={720} sizes="(max-width: 700px) 100vw, 50vw" loading="eager" fetchPriority="high" />
             <div className="art-caption">Your business.<br /><strong>Amplified by<br />intelligence.</strong></div>
             <div className="art-tag"><Icon name="spark" /><span>From complexity<br /><strong>to conversation.</strong></span></div>
           </div>
