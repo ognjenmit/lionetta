@@ -24,10 +24,10 @@ export function LionMark({ className = "" }: { className?: string }) {
   return <img className={`lion-mark ${className}`} src={LIONETTA_LOGO_SRC} width="64" height="64" alt="" />;
 }
 
-export function AssistantPortrait() {
+export function AssistantPortrait({ talking = false }: { talking?: boolean }) {
   return <picture className="assistant-portrait-frame">
     <source media="(prefers-reduced-motion: reduce)" srcSet={LIONETTA_HERO_SRC} />
-    <img className="assistant-portrait" src={LIONETTA_ASSISTANT_SRC} width="64" height="64" alt="" />
+    <img className="assistant-portrait" src={talking ? LIONETTA_ASSISTANT_SRC : LIONETTA_HERO_SRC} width="64" height="64" alt="" />
   </picture>;
 }
 
